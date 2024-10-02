@@ -54,7 +54,45 @@ function DisplayData(){
 
 // Log in / Sign up
 
+//Sign Up
 
+
+//get email data from text field in html
+const emailTextField=document.getElementById("emailTextField");
+let email="kai@gmail.com" //unTextField.value; //May not work as intended
+console.log(email);
+//Email must have an @ symbol
+let isEmailValid=false;
+function ValidateEmail(str) {
+    for (let index = 0; index < email.length; index++) {
+        if (str.charAt(index)=="@") {
+            isEmailValid=true;
+        }
+    }
+}
+ValidateEmail(email);
+
+//validate password
+//For this i used a regex which i found at https://www.geeksforgeeks.org/javascript-program-to-check-if-a-string-contains-uppercase-lowercase-special-characters-and-numeric-values/ 
+//This regex will test the string for at least 1: lowercase letter, capital letter, digit, special character
+let password="KingShrek12!"
+let isPasswordValid=false;
+  function isAllCharPresent(str) {
+    let pattern = new RegExp(
+        "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[-+_!@#$%^&*.,?]).+$"
+    );
+
+    if (pattern.test(str))
+        isPasswordValid=true;
+}
+console.log();
+isAllCharPresent(password);
+console.log(isPasswordValid);
+console.log(isEmailValid);
+
+
+//Send user data to local and session storage
+//Log In to an account by checking if everything is the same
 
 
 
