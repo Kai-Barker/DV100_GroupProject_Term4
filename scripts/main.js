@@ -92,10 +92,53 @@ console.log(isEmailValid);
 
 
 //Send user data to local and session storage
+
+
 //Log In to an account by checking if everything is the same
-
-
-
+//these will be retrieved from storage
+const testMail="kaikai@gmail.com"
+const testPass="QueenShrek1!"
+//these will be input by the user
+let inputEmail="kaikai@gmail.com"
+let inputPass="QueenShrek1!"
+//Check if the same
+//Will edit in future depending if we go with objects or not
+// function LogIn() {
+//     if ((testMail==inputEmail&&testPass==inputPass)) {
+//         return true;
+//     }
+//     else{
+//         return false;
+//     }
+// }
+// if (LogIn()) {
+//     console.log("You shall pass!");
+// }
+// else{
+//     console.log("You Shall not pass!");
+// }
+//With an object, easy to extend to look at if theres an array of objects. Not sure how user storage works yet
+let user = {
+    email: "kaikai@gmail.com",
+    password: "QueenShrek1!"
+};
+function LogInObj() {
+    if (user.email==inputEmail) {
+        
+        if (user.password==inputPass) {
+            return true;
+        }
+    }
+    else{
+        return false;
+    }
+}
+if (LogInObj()) {
+    console.log("Yes");
+}
+else{
+    console.log("Nuh uh");   
+}
 
 
 
