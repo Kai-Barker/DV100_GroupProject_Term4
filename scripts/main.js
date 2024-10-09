@@ -3,28 +3,29 @@ console.log("howdy");
 let trendingMoviesArray;
 
 class Movie{
-    constructor(title, rating, image, length, genre){
+    constructor(title, rating, image, genreArray){
         this.title=title;
         this.rating=rating;
         this.image=image;
-        this.length=length;
-        this.genre=genre;
+        this.genreArray=genreArray;
     }
 }
 class HorrorMovie extends Movie{
-    constructor(title, rating, image, length, genre){
-        super(title,rating,image,length);
+    constructor(title, rating, image, genre){
+        super(title,rating,image);
         genre="horror";
     }
 }
 class ActionMovie extends Movie{
-    constructor(title, rating, image, length, genre){
-        super(title,rating,image,length);
+    constructor(title, rating, image, genre){
+        super(title,rating,image);
         genre="action";
     }
 }
 
-let buttonClicked=0; 
+let movieData=[];
+console.log(movieData);
+
 //let imageHTML=document.getElementById('body'); //Image link to page, must be changed
 //let img=document.createElement('img');
 
@@ -39,7 +40,23 @@ const options = {
   
   fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
     .then(response => response.json())
-    .then(response => console.log(response))
+    .then(response => {console.log(response);
+        const movies=response.results;
+        movies.forEach(movie => {
+            const movieObj = {
+                title: movie.title,
+                rating: movie.vote_average,
+                image: movie.poster_path,
+                genre:movie.genre_ids
+            };
+            console.log(movieObj.genre);
+            
+            let movieTemp=new Movie(movieObj.title, movieObj.rating, movieObj.image, movieObj.genre);
+
+            // Push each movie object into the movieData array
+            movieData.push(movieTemp);
+        });
+    })
     .catch(err => console.error(err));
 
 
