@@ -1,4 +1,4 @@
-//Collect data from API
+// //Collect data from API
 console.log("howdy");
 let trendingMoviesArray;
 
@@ -84,7 +84,6 @@ const options = {
 //          })
 //    .catch((error) => console.error(error));
 // }();
-
 function MineMovies(temp) {
     console.log("Here is temp"+temp);
     //Creating a new array with what we need
@@ -116,7 +115,6 @@ let horrorMovie2=new HorrorMovie();
 let actionMovie1=new ActionMovie();
 let actionMovie2=new ActionMovie();
 //2 objects per subclass
-
 // Log in / Sign up
 
 //Sign Up
@@ -221,6 +219,40 @@ else{
 
 // Homepage / index
 
+//Collect data from API
+function MineMovies(temp) {
+    console.log("Here is temp"+temp);
+    //Creating a new array with what we need
+    moviesArray = temp.map(item => {
+        return {
+            title: item.title,
+            rating: item.imdbRating,
+            image: item.image,
+            length: item.timeline
+        }
+    });
+    console.log(moviesArray);
+}
+function DisplayData() {
+    // Display 3 movies in a carousel
+    const carouselMovies = moviesArray.slice(0, 3);
+    console.log("Carousel Movies:", carouselMovies);
+    // Code to render carouselMovies in the carousel goes here
+
+    // Display 2 sections of 5 movies each horizontally
+    const horizontalMovies1 = moviesArray.slice(3, 8);
+    const horizontalMovies2 = moviesArray.slice(8, 13);
+    console.log("Horizontal Section 1:", horizontalMovies1);
+    console.log("Horizontal Section 2:", horizontalMovies2);
+    // Code to render horizontalMovies1 and horizontalMovies2 goes here
+
+    // Display a row of 8 movie posters
+    const posterMovies = moviesArray.slice(13, 21);
+    console.log("Poster Movies:", posterMovies);
+    // Code to render posterMovies in a row goes here
+
+    buttonClicked++;
+}
 
 
 
