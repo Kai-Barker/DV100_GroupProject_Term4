@@ -1,39 +1,77 @@
 //Collect data from API
 console.log("howdy");
-let moviesArray;
+let trendingMoviesArray;
+
+class Movie{
+    constructor(title, rating, image, length, genre){
+        this.title=title;
+        this.rating=rating;
+        this.image=image;
+        this.length=length;
+        this.genre=genre;
+    }
+}
+class HorrorMovie extends Movie{
+    constructor(title, rating, image, length, genre){
+        super(title,rating,image,length);
+        genre="horror";
+    }
+}
+class ActionMovie extends Movie{
+    constructor(title, rating, image, length, genre){
+        super(title,rating,image,length);
+        genre="action";
+    }
+}
+
 let buttonClicked=0; 
 //let imageHTML=document.getElementById('body'); //Image link to page, must be changed
 //let img=document.createElement('img');
 
-const myHeaders = new Headers();
-myHeaders.append("x-apihub-key", "lYrj-KOMtKiStLzuttl-a4IvbOh3bL-xsnYqkn7iSH0pSHYPSY");
-myHeaders.append("x-apihub-host", "Movies-Verse.allthingsdev.co");
-myHeaders.append("x-apihub-endpoint", "611cdfda-546d-4cc9-91ab-bfdac3194613");
+//Trending Movies API
+const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NWFkODAxN2JkNzc3YzIwNDM5YWZjNTk4YzYwNzYyOCIsIm5iZiI6MTcyODQ4MjU0OS45NTA3ODksInN1YiI6IjY3MDY4YWJhNDQyNjVjNDM1OTc4NDUwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.dvR_J8VCcEtn_psaz5tGnRgyfajaVI8cLnxRs1A0ZZA'
+    }
+  };
+  
+  fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
 
-const requestOptions = {
-   method: "GET",
-   headers: myHeaders,
-   redirect: "follow"
-};
 
-!async function() {
-    await fetch("https://Movies-Verse.proxy-production.allthingsdev.co/api/movies/most-popular-movies", requestOptions)
-   .then((response) => response.text())
-   .then((result) => {console.log(result);
-             let JSONResult=JSON.parse(result);
-             //Everything is stored in an object called movies. As such we need JSONResult.movies
-             console.log("The result of JSonparse:"+JSONResult.movies);
-             //Parameter
-             MineMovies(JSONResult.movies);
-             DisplayData();
-         })
-   .catch((error) => console.error(error));
-}();
+// const myHeadersTrending = new Headers();
+// myHeadersTrending.append("x-apihub-key", "lYrj-KOMtKiStLzuttl-a4IvbOh3bL-xsnYqkn7iSH0pSHYPSY");
+// myHeadersTrending.append("x-apihub-host", "Movies-Verse.allthingsdev.co");
+// myHeadersTrending.append("x-apihub-endpoint", "611cdfda-546d-4cc9-91ab-bfdac3194613");
+
+// const requestOptionsTrending = {
+//    method: "GET",
+//    headers: myHeadersTrending,
+//    redirect: "follow"
+// };
+
+// !async function() {
+//     await fetch("https://Movies-Verse.proxy-production.allthingsdev.co/api/movies/most-popular-movies", requestOptionsTrending)
+//    .then((response) => response.text())
+//    .then((result) => {console.log(result);
+//              let JSONResult=JSON.parse(result);
+//              //Everything is stored in an object called movies. As such we need JSONResult.movies
+//              console.log("The result of JSonparse:"+JSONResult.movies);
+//              //Parameter
+//              MineMovies(JSONResult.movies);
+//              DisplayData();
+//          })
+//    .catch((error) => console.error(error));
+// }();
 
 function MineMovies(temp) {
     console.log("Here is temp"+temp);
     //Creating a new array with what we need
-    moviesArray = temp.map(item => {
+    trendingMoviesArray = temp.map(item => {
         return {
             title: item.title,
             rating: item.imdbRating,
@@ -41,16 +79,26 @@ function MineMovies(temp) {
             length: item.timeline
         }
     });
-    console.log(moviesArray);
+    console.log(trendingMoviesArray);
 }
 function DisplayData(){
-    let temp=moviesArray[buttonClicked].title+""+moviesArray[buttonClicked].rating+""+moviesArray[buttonClicked].length+"";
-    let tempImg= moviesArray[buttonClicked].image;
+    let temp=trendingMoviesArray[buttonClicked].title+""+trendingMoviesArray[buttonClicked].rating+""+trendingMoviesArray[buttonClicked].length+"";
+    let tempImg= trendingMoviesArray[buttonClicked].image;
     console.log("Here is temp"+temp);
     //img.src=tempImg; //For displaying images
     //imageHTML.appendChild(img);    //Need to fix this for image display
     buttonClicked++;
 }
+
+
+
+//1 parent class
+//2 subclasses based on genre
+let horrorMovie1=new HorrorMovie();
+let horrorMovie2=new HorrorMovie();
+let actionMovie1=new ActionMovie();
+let actionMovie2=new ActionMovie();
+//2 objects per subclass
 
 // Log in / Sign up
 
@@ -58,9 +106,20 @@ function DisplayData(){
 
 
 //get email data from text field in html
+class User{
+    constructor(nameIn, emailIn, passwordIn){
+        this.nameIn=nameIn;
+        this.emailIn=emailIn;
+        this.passwordIn=passwordIn;
+    }
+}
+const nameTextField=document.getElementById("nameTextField");
+let username="Kai"
 const emailTextField=document.getElementById("emailTextField");
 let email="kai@gmail.com" //unTextField.value; //May not work as intended
 console.log(email);
+let password="KingShrek12!"
+let user1=new User(username, email, password);
 //Email must have an @ symbol
 let isEmailValid=false;
 function ValidateEmail(str) {
@@ -75,7 +134,8 @@ ValidateEmail(email);
 //validate password
 //For this i used a regex which i found at https://www.geeksforgeeks.org/javascript-program-to-check-if-a-string-contains-uppercase-lowercase-special-characters-and-numeric-values/ 
 //This regex will test the string for at least 1: lowercase letter, capital letter, digit, special character
-let password="KingShrek12!"
+
+
 let isPasswordValid=false;
   function isAllCharPresent(str) {
     let pattern = new RegExp(
