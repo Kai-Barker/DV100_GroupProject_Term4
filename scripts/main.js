@@ -11,20 +11,18 @@ class Movie{
     }
 }
 class HorrorMovie extends Movie{
-    constructor(title, rating, image, genre){
-        super(title,rating,image);
-        genre="horror";
+    constructor(title, rating, image, genreArray){
+        super(title,rating,image, genreArray);
     }
 }
 class ActionMovie extends Movie{
-    constructor(title, rating, image, genre){
-        super(title,rating,image);
-        genre="action";
+    constructor(title, rating, image, genreArray){
+        super(title,rating,image, genreArray);
     }
 }
 
 let movieData=[];
-console.log(movieData);
+
 
 //let imageHTML=document.getElementById('body'); //Image link to page, must be changed
 //let img=document.createElement('img');
@@ -37,8 +35,8 @@ const options = {
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NWFkODAxN2JkNzc3YzIwNDM5YWZjNTk4YzYwNzYyOCIsIm5iZiI6MTcyODQ4MjU0OS45NTA3ODksInN1YiI6IjY3MDY4YWJhNDQyNjVjNDM1OTc4NDUwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.dvR_J8VCcEtn_psaz5tGnRgyfajaVI8cLnxRs1A0ZZA'
     }
   };
-  
-  fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
+  (async function() {
+    await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
     .then(response => response.json())
     .then(response => {console.log(response);
         const movies=response.results;
@@ -49,15 +47,20 @@ const options = {
                 image: movie.poster_path,
                 genre:movie.genre_ids
             };
-            console.log(movieObj.genre);
             
             let movieTemp=new Movie(movieObj.title, movieObj.rating, movieObj.image, movieObj.genre);
 
             // Push each movie object into the movieData array
             movieData.push(movieTemp);
         });
+        console.log(movieData);
+        filterGenres("SCIFI");
+        console.log(filteredMovies);
+        
     })
     .catch(err => console.error(err));
+})();
+  
 
 
 // const myHeadersTrending = new Headers();
@@ -84,19 +87,6 @@ const options = {
 //          })
 //    .catch((error) => console.error(error));
 // }();
-function MineMovies(temp) {
-    console.log("Here is temp"+temp);
-    //Creating a new array with what we need
-    trendingMoviesArray = temp.map(item => {
-        return {
-            title: item.title,
-            rating: item.imdbRating,
-            image: item.image,
-            length: item.timeline
-        }
-    });
-    console.log(trendingMoviesArray);
-}
 function DisplayData(){
     let temp=trendingMoviesArray[buttonClicked].title+""+trendingMoviesArray[buttonClicked].rating+""+trendingMoviesArray[buttonClicked].length+"";
     let tempImg= trendingMoviesArray[buttonClicked].image;
@@ -265,7 +255,65 @@ function DisplayData() {
 
 
 
+    //Sorting & Filtering
+        //Sorting
+        //Sort by: Rating Asc Desc, Title Alphebetical A-Z
+        function sortAlphabetically(ascending) {
+            // A-Z
+            if (ascending==true) {
+                movieData.sort((a,b) => {
+                    return a.title.localeCompare(b.title);
+                });
+                
+            }
+            // Z-A
+            else {
+                movieData.sort((a,b) => {
+                    return b.title.localeCompare(a.title);
+                });
+                
+            }
+        }
 
+        function sortByRating(order) {
+            if (order==true) {
+                movieData.sort((a,b) => {
+                    return b.rating -a.rating;
+                });
+            }
+            else {
+                movieData.sort((a,b) => {
+                    return a.rating -b.rating;
+                });
+            }
+        }
+        //Filtering
+        //Filter By: Genre
+        const genreMap = {
+         action: 28,
+        adventure: 12,
+        comedy: 35,
+        animation: 16,
+        history: 36,
+        horror: 27,
+        scifi: 878,
+        romance: 10749,
+        fantasy: 14,
+        drama: 18,
+        thriller: 53
+        };
+        let filteredMovies=[];
+        function filterGenres(genre) {
+            filteredMovies=[];
+            genre=genre.toLowerCase();
+            const genreId=genreMap[genre];
+            if (genreId) {
+                filteredMovies=movieData.filter(movie => movie.genreArray.includes(genreId));
+            }
+            else {
+                console.log("Genre not found");
+            }
+        }
 
 
 
