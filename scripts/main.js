@@ -56,7 +56,7 @@ const options = {
         console.error(err);
     }
 })();
-  
+
 function DisplayData(){
     let temp=trendingMoviesArray[buttonClicked].title+""+trendingMoviesArray[buttonClicked].rating+""+trendingMoviesArray[buttonClicked].length+"";
     let tempImg= trendingMoviesArray[buttonClicked].image;
