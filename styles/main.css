@@ -29,6 +29,52 @@ Use this too identify CSS problems
 
 /* Lib-movies page */
 
+/* Used for testing, will change */
+
+.header-section {
+  position: relative;
+  height: 400px;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background-size: cover;
+  background-position: center;
+}
+
+.header-info {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.header-image {
+  width: 150px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.movie-body {
+  margin-top: 20px;
+}
+
+.movie-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.movie-item {
+  text-align: center;
+  flex: 1;
+  margin: 0 5px;
+}
+
+.movie-image {
+  width: 120px;
+  height: auto;
+  border-radius: 5px;
+}
 
 
 
