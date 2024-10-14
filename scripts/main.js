@@ -44,21 +44,19 @@ const options = {
         
         const movies = data.results;
         movies.forEach(movie => {
-            const movieObj = new Movie(movie.title, movie.vote_average, movie.poster_path, movie.genre_ids);
+            const movieObj = new Movie(movie.title, movie.vote_average, movie.poster_path);
             moviesArray.push(movieObj);
         });
         console.log(moviesArray);
 
         // Call functions to display the header and body
-        DisplayHomeHeader();
         DisplayHeader();
         DisplayMovieRows();
-        
     } catch (err) {
         console.error(err);
     }
 })();
-
+  
 function DisplayData(){
     let temp=trendingMoviesArray[buttonClicked].title+""+trendingMoviesArray[buttonClicked].rating+""+trendingMoviesArray[buttonClicked].length+"";
     let tempImg= trendingMoviesArray[buttonClicked].image;
@@ -181,54 +179,6 @@ else{
 
 // Homepage / index
 
-
-function DisplayHomeHeader() {
-    const headerHomeSection=document.getElementById("homeHeroSection");
-    const headerTitleSection=document.getElementById("HomeHeroTitle");
-    const headerGenre1Section=document.getElementById("HomeHeroGenre1");
-    const headerGenre2Section=document.getElementById("HomeHeroGenre2");
-    const headerGenre3Section=document.getElementById("HomeHeroGenre3");
-    console.log("howdy");
-    if (moviesArray.length > 0) {
-        const featuredMovie = moviesArray[Math.floor(Math.random() * moviesArray.length)]; // Random movie for header
-        console.log(featuredMovie);
-        console.log(getGenreName(featuredMovie.genreArray[0]));
-        headerHomeSection.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${featuredMovie.image})`;
-        headerTitleSection.innerHTML=featuredMovie.title;
-        headerGenre1Section.innerHTML=getGenreName(featuredMovie.genreArray[0]).charAt(0).toUpperCase()+getGenreName(featuredMovie.genreArray[0]).slice(1);
-        if (featuredMovie.genreArray[1] && isGenreIncluded(featuredMovie.genreArray[1])) {
-            headerGenre2Section.innerHTML=getGenreName(featuredMovie.genreArray[1]).charAt(0).toUpperCase()+getGenreName(featuredMovie.genreArray[1]).slice(1);
-            if (featuredMovie.genreArray[2] && isGenreIncluded(featuredMovie.genreArray[2])) {
-                headerGenre3Section.innerHTML=getGenreName(featuredMovie.genreArray[2]).charAt(0).toUpperCase()+getGenreName(featuredMovie.genreArray[2]).slice(1);
-            }
-            else{
-                headerGenre3Section.innerHTML="";
-            }
-        }
-        else if(featuredMovie.genreArray[2] && isGenreIncluded(featuredMovie.genreArray[2])){
-            headerGenre2Section.innerHTML=getGenreName(featuredMovie.genreArray[2]).charAt(0).toUpperCase()+getGenreName(featuredMovie.genreArray[2]).slice(1);
-            headerGenre3Section.innerHTML="";
-        }
-        else{
-            headerGenre2Section.innerHTML="";
-        }
-        
-        
-        
-        
-        
-        
-        // headerHomeSection.innerHTML = `
-        //     <div class="header-info">
-        //         <h1>${featuredMovie.title}</h1>
-        //         <p>Rating: ${featuredMovie.rating}</p>
-        //         <button class="btn btn-primary">Watch Now</button>
-        //         <button class="btn btn-secondary">Add to Watchlist</button>
-        //     </div>
-        // `;
-    }
-}
-
 //Collect data from API
 function MineMovies(temp) {
     console.log("Here is temp"+temp);
@@ -310,7 +260,7 @@ function DisplayData() {
         //Filtering
         //Filter By: Genre
         const genreMap = {
-        action: 28,
+         action: 28,
         adventure: 12,
         comedy: 35,
         animation: 16,
@@ -333,14 +283,6 @@ function DisplayData() {
             else {
                 console.log("Genre not found");
             }
-        }
-        function getGenreName(value) {
-            return Object.keys(genreMap).find(key => genreMap[key] === value);
-        }
-        //not all genres are listed in the genremap. Use this method in if statements
-        function isGenreIncluded(id) {
-            let genreIds = Object.values(genreMap);
-            return genreIds.includes(id);
         }
 
 

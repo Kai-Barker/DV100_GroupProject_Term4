@@ -8,6 +8,26 @@ Use this too identify CSS problems
     
    */
 
+
+/* nav */
+
+  /* Custom CSS for rounded corners on the navbar */
+.navbar {
+  background-color: #595959;
+  border-radius: 20px; /* Adjust this value to change the roundness */
+  padding: 10px; /* Optional: Adds spacing inside the navbar */
+}
+
+/* If you want to target only the top or bottom corners, use: */
+.navbar {
+  background-color: #595959;
+ border-radius: 50px;
+ padding: 10px 10px 10px 10px;
+ margin: 20px 15px 15px 10px;
+
+}
+
+
 /* Log in / Sign up */
 
 
