@@ -139,7 +139,37 @@ console.log(isEmailValid);
 
 
 //Send user data to local and session storage
+const form=document.forms["SignLog"];
+console.log("we gotta test");
+if (form) {
+    console.log("we gotta form");
+    console.log(form);
+    
+    form.addEventListener("submit", loginConfirmation);
+}
+else{
+    console.log("form not found for some reason");
+    
+}
 
+function loginConfirmation(event) {
+    event.preventDefault();
+    console.log(this.email);
+    console.log(this.password);
+    
+    
+    let formData= {
+        "email":this.email.value,
+        "password":this.password.value
+    }
+    localStorage.setItem("userData", JSON.stringify(formData));
+    alert("Your data has been submitted");
+}
+function retrieveLogin(){
+    let formData= localStorage.getItem("userData");
+    console.log(JSON.parse(formData));
+    
+}
 
 //Log In to an account by checking if everything is the same
 //these will be retrieved from storage
