@@ -18,11 +18,3 @@ body{
 }
 
 
-body{
-    background: url(../assets/The\ Crow\ movie\ poster.jpeg) ;
-    background-blend-mode: multiply;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-
-}
