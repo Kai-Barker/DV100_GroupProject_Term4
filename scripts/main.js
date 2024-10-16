@@ -1,7 +1,7 @@
-// //Collect data from API
-console.log("howdy");
-let trendingMoviesArray;
-
+// Collect data from API
+console.log("Initializing Movie Library");
+let moviesArray = []; // Ensure moviesArray is defined globally
+let pageCheck="";
 class Movie{
     constructor(title, rating, image, genreArray){
         this.title=title;
@@ -34,59 +34,41 @@ const options = {
       accept: 'application/json',
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NWFkODAxN2JkNzc3YzIwNDM5YWZjNTk4YzYwNzYyOCIsIm5iZiI6MTcyODQ4MjU0OS45NTA3ODksInN1YiI6IjY3MDY4YWJhNDQyNjVjNDM1OTc4NDUwMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.dvR_J8VCcEtn_psaz5tGnRgyfajaVI8cLnxRs1A0ZZA'
     }
-  };
-  (async function() {
-    await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
-    .then(response => response.json())
-    .then(response => {console.log(response);
-        const movies=response.results;
-        movies.forEach(movie => {
-            const movieObj = {
-                title: movie.title,
-                rating: movie.vote_average,
-                image: movie.poster_path,
-                genre:movie.genre_ids
-            };
-            
-            let movieTemp=new Movie(movieObj.title, movieObj.rating, movieObj.image, movieObj.genre);
+};
 
-            // Push each movie object into the movieData array
-            movieData.push(movieTemp);
-        });
-        console.log(movieData);
-        filterGenres("SCIFI");
-        console.log(filteredMovies);
+(async function () {
+    try {
+        const response = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options);
+        const data = await response.json();
+        console.log(data);
         
-    })
-    .catch(err => console.error(err));
+        const movies = data.results;
+        movies.forEach(movie => {
+            const movieObj = new Movie(movie.title, movie.vote_average, movie.poster_path, movie.genre_ids);
+            moviesArray.push(movieObj);
+        });
+        console.log(moviesArray);
+
+        // Call functions to display the header and body
+        if (pageCheck=="index") {
+            DisplayHomeHeader();
+        console.log("WOrks after my method");
+        }
+        console.log(pageCheck);
+        
+        if (pageCheck=="library") {
+            DisplayHeader();
+            console.log("works after display header");
+            
+            DisplayMovieRows();
+            console.log("all works");
+        }
+        
+    } catch (err) {
+        console.error(err);
+    }
 })();
   
-
-
-// const myHeadersTrending = new Headers();
-// myHeadersTrending.append("x-apihub-key", "lYrj-KOMtKiStLzuttl-a4IvbOh3bL-xsnYqkn7iSH0pSHYPSY");
-// myHeadersTrending.append("x-apihub-host", "Movies-Verse.allthingsdev.co");
-// myHeadersTrending.append("x-apihub-endpoint", "611cdfda-546d-4cc9-91ab-bfdac3194613");
-
-// const requestOptionsTrending = {
-//    method: "GET",
-//    headers: myHeadersTrending,
-//    redirect: "follow"
-// };
-
-// !async function() {
-//     await fetch("https://Movies-Verse.proxy-production.allthingsdev.co/api/movies/most-popular-movies", requestOptionsTrending)
-//    .then((response) => response.text())
-//    .then((result) => {console.log(result);
-//              let JSONResult=JSON.parse(result);
-//              //Everything is stored in an object called movies. As such we need JSONResult.movies
-//              console.log("The result of JSonparse:"+JSONResult.movies);
-//              //Parameter
-//              MineMovies(JSONResult.movies);
-//              DisplayData();
-//          })
-//    .catch((error) => console.error(error));
-// }();
 function DisplayData(){
     let temp=trendingMoviesArray[buttonClicked].title+""+trendingMoviesArray[buttonClicked].rating+""+trendingMoviesArray[buttonClicked].length+"";
     let tempImg= trendingMoviesArray[buttonClicked].image;
@@ -157,7 +139,37 @@ console.log(isEmailValid);
 
 
 //Send user data to local and session storage
+const form=document.forms["SignLog"];
+console.log("we gotta test");
+if (form) {
+    console.log("we gotta form");
+    console.log(form);
+    
+    form.addEventListener("submit", loginConfirmation);
+}
+else{
+    console.log("form not found for some reason");
+    
+}
 
+function loginConfirmation(event) {
+    event.preventDefault();
+    console.log(this.email);
+    console.log(this.password);
+    
+    
+    let formData= {
+        "email":this.email.value,
+        "password":this.password.value
+    }
+    localStorage.setItem("userData", JSON.stringify(formData));
+    alert("Your data has been submitted");
+}
+function retrieveLogin(){
+    let formData= localStorage.getItem("userData");
+    console.log(JSON.parse(formData));
+    
+}
 
 //Log In to an account by checking if everything is the same
 //these will be retrieved from storage
@@ -209,6 +221,52 @@ else{
 
 // Homepage / index
 
+function DisplayHomeHeader() {
+    const headerHomeSection=document.getElementById("homeHeroSection");
+    const headerTitleSection=document.getElementById("HomeHeroTitle");
+    const headerGenre1Section=document.getElementById("HomeHeroGenre1");
+    const headerGenre2Section=document.getElementById("HomeHeroGenre2");
+    const headerGenre3Section=document.getElementById("HomeHeroGenre3");
+    console.log("howdy");
+    if (moviesArray.length > 0) {
+        const featuredMovie = moviesArray[Math.floor(Math.random() * moviesArray.length)]; // Random movie for header
+        console.log(featuredMovie);
+        console.log(getGenreName(featuredMovie.genreArray[0]));
+        headerHomeSection.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${featuredMovie.image})`;
+        headerTitleSection.innerHTML=featuredMovie.title;
+        headerGenre1Section.innerHTML=getGenreName(featuredMovie.genreArray[0]).charAt(0).toUpperCase()+getGenreName(featuredMovie.genreArray[0]).slice(1);
+        if (featuredMovie.genreArray[1] && isGenreIncluded(featuredMovie.genreArray[1])) {
+            headerGenre2Section.innerHTML=getGenreName(featuredMovie.genreArray[1]).charAt(0).toUpperCase()+getGenreName(featuredMovie.genreArray[1]).slice(1);
+            if (featuredMovie.genreArray[2] && isGenreIncluded(featuredMovie.genreArray[2])) {
+                headerGenre3Section.innerHTML=getGenreName(featuredMovie.genreArray[2]).charAt(0).toUpperCase()+getGenreName(featuredMovie.genreArray[2]).slice(1);
+            }
+            else{
+                headerGenre3Section.innerHTML="";
+            }
+        }
+        else if(featuredMovie.genreArray[2] && isGenreIncluded(featuredMovie.genreArray[2])){
+            headerGenre2Section.innerHTML=getGenreName(featuredMovie.genreArray[2]).charAt(0).toUpperCase()+getGenreName(featuredMovie.genreArray[2]).slice(1);
+            headerGenre3Section.innerHTML="";
+        }
+        else{
+            headerGenre2Section.innerHTML="";
+        }
+        
+        
+        
+        
+        
+        
+        // headerHomeSection.innerHTML = `
+        //     <div class="header-info">
+        //         <h1>${featuredMovie.title}</h1>
+        //         <p>Rating: ${featuredMovie.rating}</p>
+        //         <button class="btn btn-primary">Watch Now</button>
+        //         <button class="btn btn-secondary">Add to Watchlist</button>
+        //     </div>
+        // `;
+    }
+}
 //Collect data from API
 function MineMovies(temp) {
     console.log("Here is temp"+temp);
@@ -314,7 +372,64 @@ function DisplayData() {
                 console.log("Genre not found");
             }
         }
+        function getGenreName(value) {
+            return Object.keys(genreMap).find(key => genreMap[key] === value);
+        }
+        //not all genres are listed in the genremap. Use this method in if statements
+        function isGenreIncluded(id) {
+            let genreIds = Object.values(genreMap);
+            return genreIds.includes(id);
+        }
 
+
+
+ console.log("movies?");
+       
+function DisplayHeader() {
+    const headerSection = document.getElementById("header");
+    if (moviesArray.length > 0) {
+        const featuredMovie = moviesArray[Math.floor(Math.random() * moviesArray.length)]; // Random movie for header
+        headerSection.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${featuredMovie.image})`;
+        headerSection.innerHTML = `
+            <div class="header-info">
+                <h1>${featuredMovie.title}</h1>
+                <p>Rating: ${featuredMovie.rating}</p>
+                <button class="btn btn-primary">Watch Now</button>
+                <button class="btn btn-secondary">Add to Watchlist</button>
+            </div>
+        `;
+    }
+}
+
+function DisplayMovieRows() {
+    const bodySection = document.getElementById("body");
+    // Shuffle moviesArray for random display
+    const shuffledMovies = moviesArray.sort(() => 0.5 - Math.random());
+
+    for (let i = 0; i < 5; i++) {
+        const rowMovies = shuffledMovies.slice(i * 5, (i + 1) * 5); // Get 5 movies for each row
+        const rowDiv = document.createElement("div");
+        rowDiv.className = "movie-row";
+
+        rowMovies.forEach(movie => {
+            const movieDiv = document.createElement("div");
+            movieDiv.className = "movie-item";
+            movieDiv.innerHTML = `
+                <img src="https://image.tmdb.org/t/p/w500${movie.image}" alt="${movie.title}" class="movie-image" />
+                <h2>${movie.title}</h2>
+                <p>Rating: ${movie.rating}</p>
+            `;
+            rowDiv.appendChild(movieDiv);
+        });
+
+        bodySection.appendChild(rowDiv);
+    }
+}
+
+
+console.log("I-hope-this-works");
+
+        
 
 
 

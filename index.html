@@ -1,12 +1,5 @@
 <!DOCTYPE html><!-- This is a comment-->
 <html lang="en">
-    <head>
-       
-       
-
- 
-
-<html lang="en">
 <head>
     <meta charset="UTF-8"><!--Types of letters and Symbols-->
     <meta http-equiv="X-UA-Compatible" content="IE-edge"><!--Browser compatibility-->
@@ -15,14 +8,74 @@
     <meta name="author" content="Francois le Roux 231256, Kai Barker 241065, Darius Guggenbichler 231261, Oratile Mdladla 231263">
 
     <!--Bootstrap, Javascript, Google Fonts, CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/main.css">
 
     <title>Skreksea - Homepage</title>
 
 </head>
-<body>
-    
-
+<nav class="navbar navbar-expand-lg" style="background-color: #595959;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html"><img src="assets/images/DVLogoWord.png" alt="Logo" class="img-fluid" style="width: 200px"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item p-3">
+            <a class="nav-link" href="index.html" style="color: #4f0224;">Home</a>
+          </li>
+          <li class="nav-item p-3">
+            <a class="nav-link text-light" href="/pages/lib-movies.html">Movies</a>
+          </li>
+          <li class="nav-item p-3">
+            <a class="nav-link text-light" href="#">Categories</a>
+          </li>
+          <li class="nav-item p-3">
+            <a class="nav-link text-light" href="pages/watchlist.html">Watchlist</a>
+          </li>
+        </ul>
+      </div>
+      <div class="d-flex">
+        <!-- Notification Icon -->
+        <a href="#" class="nav-link p-3">
+          <img src="assets/images/searchIconDV.png" alt="Search" class="img-fluid" style="width: 30px;">
+        </a>
+        <!-- Search Icon -->
+        <a href="#" class="nav-link p-3">
+          <img src="assets/images/DVNotificationsIcon.png" alt="Notifications" class="img-fluid">
+        </a>
+        <!-- Profile Icon -->
+        <a href="#" class="nav-link p-3">
+          <img src="assets/images/DVProfileIcon.png" alt="Profile" class="img-fluid rounded-circle" style="width: 30px;">
+        </a>
+      </div>
+    </div>
+  </nav>
+<body style="background-color: black;" onload="pageCheck=`index`; retrieveLogin();">
+    <section id="homeHeroSection" class="hero-section d-flex align-items-center p-1" style="background-image: url(assets/images/DVLogoWord.png); background-size: cover; background-position: center; height: 70vh; position: relative;">
+        <div class="overlay" style="background-color:#0000008e; position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+        <div class="text-start text-white ms-5" style="position: relative;">
+          <h1 id="HomeHeroTitle" class="display-3 fw-bold">Movie Title</h1>
+          <div class="row" style="padding-top: 3%; padding-bottom: 15%;">
+            <div class="col-md-3">
+            <p id="HomeHeroGenre1" class="fs-5">Genre</p>
+            </div>
+            <div class="col-md-3">
+            <p id="HomeHeroGenre2" class="fs-5">Genre</p>
+            </div>
+            <div class="col-md-3 justify-content-center">
+                <p id="HomeHeroGenre3" class="fs-5">Genre</p>
+            </div>
+        </div>
+          <div class="mt-4">
+            <a href="#" class="btn text-light btn-lg me-3" style="background-color: #4f0224;">Watch Now</a>
+            <a href="#" class="btn btn-outline-light btn-lg">More Info</a>
+          </div>
+        </div>
+      </section>
+           
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="scripts/main.js"></script>
 </body>
 </html>
