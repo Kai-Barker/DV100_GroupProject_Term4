@@ -384,7 +384,7 @@ function DisplayData() {
 
 
         function DisplayHeader() {
-            const headerSection = document.getElementById("header");
+            const headerSection = document.getElementById("movie-lib-head");
             if (moviesArray.length > 0) {
                 const featuredMovie = moviesArray[Math.floor(Math.random() * moviesArray.length)]; // Random movie for header
                 headerSection.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${featuredMovie.image})`;
@@ -400,14 +400,14 @@ function DisplayData() {
         }
         
         function DisplayMovieRows() {
-            const bodySection = document.getElementById("body");
+            const bodySection = document.getElementById("movie-lib-body");
             bodySection.innerHTML = ''; // Clear previous rows if necessary
         
       
             for (let i = 0; i < 5; i++) {
                 const rowMovies = moviesArray.slice(i * 5, (i + 1) * 5); // Get 5 movies for each row
                 const rowDiv = document.createElement("div");
-                rowDiv.className = "movie-row";
+                rowDiv.className = "movie-body";
         
                 rowMovies.forEach(movie => {
                     const movieDiv = document.createElement("div");
