@@ -360,26 +360,20 @@ function DisplayData() {
         drama: 18,
         thriller: 53
         };
-        let filteredMovies=[];
-        function filterGenres(genre) {
-            filteredMovies=[];
-            genre=genre.toLowerCase();
-            const genreId=genreMap[genre];
-            if (genreId) {
-                filteredMovies=movieData.filter(movie => movie.genreArray.includes(genreId));
+        // Function to apply the genre filter
+        function applyGenreFilter() {
+            const genreSelect = document.getElementById("genre-select");
+            const selectedGenre = genreSelect.value;
+
+            // Call the existing filtering function with the selected genre
+            if (selectedGenre) {
+                filterGenres(selectedGenre); // Assuming filterGenres is your existing function
+            } else {
+                // If no genre is selected, you might want to reset the display
+                DisplayMovieRows(); // Display all movies or handle accordingly
             }
-            else {
-                console.log("Genre not found");
-            }
         }
-        function getGenreName(value) {
-            return Object.keys(genreMap).find(key => genreMap[key] === value);
-        }
-        //not all genres are listed in the genremap. Use this method in if statements
-        function isGenreIncluded(id) {
-            let genreIds = Object.values(genreMap);
-            return genreIds.includes(id);
-        }
+
 
 
 
