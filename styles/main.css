@@ -354,14 +354,6 @@ label {
     margin-bottom: 10px;
 }
 
-.footer {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-}
-
-
 
 
 
@@ -379,3 +371,41 @@ label {
 
 
 /* watchlist page */
+
+
+
+/* Footer */
+
+.footer {
+  background-color: #333; /* Background color for the footer */
+  color: #fff; /* Text color */
+  padding: 20px 0; /* Padding for the footer */
+}
+
+.footer-logo {
+  margin-bottom: 15px; /* Space between logo and icons */
+}
+
+.footer-logo-img {
+  width: 150px; /* Adjust logo size as needed */
+}
+
+.social-media-icons {
+  display: flex; /* Use flexbox for horizontal alignment */
+  justify-content: center; /* Center the icons */
+  margin-bottom: 10px; /* Space between icons and year */
+}
+
+.social-icon {
+  margin: 0 10px; /* Space between icons */
+}
+
+.social-icon img {
+  width: 30px; /* Adjust icon size as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.footer p {
+  margin: 0; /* Remove default margin */
+}
+
