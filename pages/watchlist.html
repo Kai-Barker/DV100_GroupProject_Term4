@@ -1,21 +1,87 @@
 <!DOCTYPE html><!-- This is a comment-->
 <html lang="en">
-<head>
+    <head>
     <meta charset="UTF-8"><!--Types of letters and Symbols-->
     <meta http-equiv="X-UA-Compatible" content="IE-edge"><!--Browser compatibility-->
     <meta name="viewport" content="width-device-width, initial-scale-1.0">
-    <meta name="keywords" content="Movies, Videos, Movie, Video, VOD, Video on Demand, Trending, 2024, 2023, 2022, 2021, Top Trending,"><!--Keywords nb!-->
-    <meta name="author" content="Francois le Roux 231256, Kai Barker 241065, Darius Guggenbichler 231261, Oratile Mdladla 231263">
+    <meta name="keywords" content="Movies, Watchlist, Video on Demand, Trending">
+    <meta name="author" content="Francois le Roux, Kai Barker, Darius Guggenbichler, Oratile Mdladla">
 
     <!--Bootstrap, Javascript, Google Fonts, CSS -->
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
     <title>Skreksea - Watchlist</title>
 
 </head>
 <body>
+
+    <nav class="navbar navbar-expand-lg" style="background-color: #595959;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html"><img src="/assets/images/DVLogoWord.png" alt="Logo" class="img-fluid" style="width: 200px"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+              <li class="nav-item p-3">
+                <a class="nav-link" href="/index.html" style="color: #4f0224;">Home</a>
+              </li>
+              <li class="nav-item p-3">
+                <a class="nav-link text-light" href="lib-movies.html">Movies</a>
+              </li>
+              <li class="nav-item p-3">
+                <a class="nav-link text-light" href="#">Categories</a>
+              </li>
+              <li class="nav-item p-3">
+                <a class="nav-link text-light" href="#">Watchlist</a>
+              </li>
+            </ul>
+          </div>
+          <div class="d-flex">
+            <!-- Notification Icon -->
+            <a href="#" class="nav-link p-3">
+              <img src="/assets/images/searchIconDV.png" alt="Search" class="img-fluid" style="width: 30px;">
+            </a>
+            <!-- Search Icon -->
+            <a href="#" class="nav-link p-3">
+              <img src="/assets/images/DVNotificationsIcon.png" alt="Notifications" class="img-fluid">
+            </a>
+            <!-- Profile Icon -->
+            <a href="#" class="nav-link p-3">
+              <img src="/assets/images/DVProfileIcon.png" alt="Profile" class="img-fluid rounded-circle" style="width: 30px;">
+            </a>
+          </div>
+        </div>
+      </nav>
+
+    <div class="container">
+        <h1 class="text-center my-4">My Watchlist</h1>
+        <div id="watchlist" class="movie-body"></div>
+    </div>
+
+    <footer class="footer text-center">
+      <div class="footer-logo">
+          <img src="../assets/logo.png" alt="Logo" class="footer-logo-img"> <!-- Replace with your logo path -->
+      </div>
+      <div class="social-media-icons">
+          <a href="#" class="social-icon">
+              <img src="../assets/facebook.png" alt="Facebook" class="img-fluid"> <!-- Replace with your Facebook icon path -->
+          </a>
+          <a href="#" class="social-icon">
+              <img src="../assets/twitter.png" alt="Twitter" class="img-fluid"> <!-- Replace with your Twitter icon path -->
+          </a>
+          <a href="#" class="social-icon">
+              <img src="../assets/instagram.png" alt="Instagram" class="img-fluid"> <!-- Replace with your Instagram icon path -->
+          </a>
+          <a href="#" class="social-icon">
+              <img src="../assets/linkedin.png" alt="LinkedIn" class="img-fluid"> <!-- Replace with your LinkedIn icon path -->
+          </a>
+      </div>
+      <p>&copy; <span id="current-year"></span> Movie Library</p>
+  </footer>
     
 
-    <script src="scripts/main.js"></script>
+    <script src="/script/main.js"></script>
 </body>
 </html>

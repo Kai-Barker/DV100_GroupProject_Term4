@@ -17,13 +17,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="../styles/main.css">
 
 
     <title>Skreksea - Movie Library</title>
 
 </head>
-<body onload="pageCheck=`library`">
+<body onload="pageCheck=`library`" style="background-color: black">
   <nav class="navbar navbar-expand-lg" style="background-color: #595959;">
     <div class="container-fluid">
       <a class="navbar-brand" href="../index.html"><img src="../assets/DV secondary logo.png" alt="Logo" class="img-fluid" style="width: 200px"></a>
@@ -66,25 +66,24 @@
     </div>
   </nav>
 
-    <div class="container">
       <!-- Header Section -->
       <div class="container-fluid">
         <div id="movie-lib-head" class="header-section">
-          <section id="#" class="hero-section d-flex align-items-center p-1" >
+          <section class="hero-section d-flex align-items-center p-1">
             <div class="overlay" style="background-color:#0000008e; position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
             <div class="text-start text-white ms-5" style="position: relative;">
-              <h1 id="#" class="display-3 fw-bold">Movie Title</h1>
+              <h1 class="display-3 fw-bold">Movie Title</h1>
               <div class="row" style="padding-top: 3%; padding-bottom: 15%;">
                 <div class="col-md-3">
-                <p id="#" class="fs-5">Genre</p>
+                  <p class="fs-5">Genre</p>
                 </div>
                 <div class="col-md-3">
-                <p id="#" class="fs-5">Genre</p>
+                  <p class="fs-5">Genre</p>
                 </div>
                 <div class="col-md-3 justify-content-center">
-                    <p id="#" class="fs-5">Genre</p>
+                  <p class="fs-5">Genre</p>
                 </div>
-            </div>
+              </div>
               <div class="mt-4">
                 <a href="#" class="btn text-light btn-lg me-3" style="background-color: #4f0224;">Watch Now</a>
                 <a href="#" class="btn btn-outline-light btn-lg">More Info</a>
@@ -94,39 +93,81 @@
         </div>
 
       <!-- Filter HTML -->
-      <div class="filter-section">
-        <h2>Filter by:</h2>
-        <select id="genre-select" class="form-control">
-            <option value="">Select a genre</option>
-            <option value="action">Action</option>
-            <option value="adventure">Adventure</option>
-            <option value="comedy">Comedy</option>
-            <option value="animation">Animation</option>
-            <option value="history">History</option>
-            <option value="horror">Horror</option>
-            <option value="scifi">Sci-Fi</option>
-            <option value="romance">Romance</option>
-            <option value="fantasy">Fantasy</option>
-            <option value="drama">Drama</option>
-            <option value="thriller">Thriller</option>
-        </select>
-        <button class="btn btn-primary" id="apply-filter">Apply Filter</button>
+      <div class="container mt-4"> <!-- Add a top margin for spacing -->
+        <!-- Filter HTML -->
+        <div class="filter-section">
+            <h2>Filter by:</h2>
+            
+            <!-- Genre Filter -->
+            <select id="genre-select" class="form-control">
+                <option value="">Select a genre</option>
+                <option value="action">Action</option>
+                <option value="adventure">Adventure</option>
+                <option value="comedy">Comedy</option>
+                <option value="animation">Animation</option>
+                <option value="history">History</option>
+                <option value="horror">Horror</option>
+                <option value="scifi">Sci-Fi</option>
+                <option value="romance">Romance</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="drama">Drama</option>
+                <option value="thriller">Thriller</option>
+            </select>
+
+            <!-- Year Filter -->
+            <select id="year-select" class="form-control mt-2">
+                <option value="">Select a year</option>
+                <!-- Populate years dynamically or manually -->
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <!-- Add more years as needed -->
+            </select>
+
+            <!-- TMDB Filter -->
+            <select id="tmdb-select" class="form-control mt-2">
+                <option value="">Select TMDB Rating</option>
+                <option value="1">1 Star</option>
+                <option value="2">2 Stars</option>
+                <option value="3">3 Stars</option>
+                <option value="4">4 Stars</option>
+                <option value="5">5 Stars</option>
+            </select>
+
+            <button class="btn btn-primary mt-2" id="apply-filter">Apply Filter</button>
+        </div>
+    
+        <div id="movie-lib-body" class="movie-body-section">
+            <!-- movie rows will be displayed here -->
+        </div>
     </div>
-     
+  
 
-    <div id="movie-lib-body" class="movie-body-section">
-        <!-- movie rows will be displayed here -->
+<footer class="footer text-center">
+    <div class="footer-logo">
+        <img src="../assets/logo.png" alt="Logo" class="footer-logo-img"> <!-- Replace with your logo path -->
     </div>
-
-   
-</div>
-
-<footer class="footer">
-  <p>&copy; 2023 Movie Library</p>
+    <div class="social-media-icons">
+        <a href="#" class="social-icon">
+            <img src="../assets/facebook.png" alt="Facebook" class="img-fluid"> <!-- Replace with your Facebook icon path -->
+        </a>
+        <a href="#" class="social-icon">
+            <img src="../assets/twitter.png" alt="Twitter" class="img-fluid"> <!-- Replace with your Twitter icon path -->
+        </a>
+        <a href="#" class="social-icon">
+            <img src="../assets/instagram.png" alt="Instagram" class="img-fluid"> <!-- Replace with your Instagram icon path -->
+        </a>
+        <a href="#" class="social-icon">
+            <img src="../assets/linkedin.png" alt="LinkedIn" class="img-fluid"> <!-- Replace with your LinkedIn icon path -->
+        </a>
+    </div>
+    <p>&copy; <span id="current-year"></span> Movie Library</p>
 </footer>
   
 
-<script src="/scripts/main.js"></script>
+<script src="../scripts/main.js"></script>
 
         <!-- Bootstrap JS and dependencies -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

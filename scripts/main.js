@@ -309,80 +309,153 @@ function DisplayData() {
 
 
 
+
 // Lib-movies page
 
 
 
-    //Sorting & Filtering
-        //Sorting
-        //Sort by: Rating Asc Desc, Title Alphebetical A-Z
-        function sortAlphabetically(ascending) {
-            // A-Z
-            if (ascending==true) {
-                movieData.sort((a,b) => {
-                    return a.title.localeCompare(b.title);
-                });
+    // //Sorting & Filtering
+    //     //Sorting
+    //     //Sort by: Rating Asc Desc, Title Alphebetical A-Z
+    //     function sortAlphabetically(ascending) {
+    //         // A-Z
+    //         if (ascending==true) {
+    //             movieData.sort((a,b) => {
+    //                 return a.title.localeCompare(b.title);
+    //             });
                 
-            }
-            // Z-A
-            else {
-                movieData.sort((a,b) => {
-                    return b.title.localeCompare(a.title);
-                });
+    //         }
+    //         // Z-A
+    //         else {
+    //             movieData.sort((a,b) => {
+    //                 return b.title.localeCompare(a.title);
+    //             });
                 
-            }
-        }
+    //         }
+    //     }
 
-        function sortByRating(order) {
-            if (order==true) {
-                movieData.sort((a,b) => {
-                    return b.rating -a.rating;
+    //     function sortByRating(order) {
+    //         if (order==true) {
+    //             movieData.sort((a,b) => {
+    //                 return b.rating -a.rating;
+    //             });
+    //         }
+    //         else {
+    //             movieData.sort((a,b) => {
+    //                 return a.rating -b.rating;
+    //             });
+    //         }
+    //     }
+    //     //Filtering
+    //     //Filter By: Genre
+    //     const genreMap = {
+    //      action: 28,
+    //     adventure: 12,
+    //     comedy: 35,
+    //     animation: 16,
+    //     history: 36,
+    //     horror: 27,
+    //     scifi: 878,
+    //     romance: 10749,
+    //     fantasy: 14,
+    //     drama: 18,
+    //     thriller: 53
+    //     };
+    //     // Function to apply the genre filter
+    //     function applyGenreFilter() {
+    //         const genreSelect = document.getElementById("genre-select");
+    //         const selectedGenre = genreSelect.value;
+
+    //         // Call the existing filtering function with the selected genre
+    //         if (selectedGenre) {
+    //             filterGenres(selectedGenre); // Assuming filterGenres is your existing function
+    //         } else {
+    //             // If no genre is selected, you might want to reset the display
+    //             DisplayMovieRows(); // Display all movies or handle accordingly
+    //         }
+    //     }
+
+    //New filter system/function
+            let movies = [
+                [
+                    {
+                        "title": "Movie 1",
+                        "genre": "action",
+                        "year": 2023,
+                        "tmdbRating": 5
+                    },
+                    {
+                        "title": "Movie 2",
+                        "genre": "comedy",
+                        "year": 2022,
+                        "tmdbRating": 4
+                    }
+                ]
+            ]; // Array to hold the fetched movie data
+
+            // Function to fetch movies from the API
+            function fetchMovies() {
+                fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1') // Replace with your actual API endpoint
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok ' + response.statusText);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        movies = data; // Store the fetched movies
+                        displayMovies(movies); // Display all movies initially
+                    })
+                    .catch(error => {
+                        console.error('There was a problem with the fetch operation:', error);
+                        // Optionally, display an error message to the user
+                        document.getElementById('movie-lib-body').innerText = 'Failed to load movies. Please try again later.';
+                    });
+            }
+            
+            // Function to display movies
+            function displayMovies(filteredMovies) {
+                const movieLibBody = document.getElementById('movie-lib-body');
+                movieLibBody.innerHTML = ''; // Clear previous content
+            
+                filteredMovies.forEach(movie => {
+                    const movieElement = document.createElement('div');
+                    movieElement.className = 'movie-item';
+                    movieElement.innerHTML = `
+                        <h2>${movie.title}</h2>
+                        <p>Genre: ${movie.genre}</p>
+                        <p>Year: ${movie.year}</p>
+                        <p>TMDB Rating: ${movie.tmdbRating} Stars</p>
+                    `;
+                    movieLibBody.appendChild(movieElement);
                 });
             }
-            else {
-                movieData.sort((a,b) => {
-                    return a.rating -b.rating;
+            
+            // Function to apply filters
+            function applyFilters() {
+                const selectedGenre = document.getElementById('genre-select').value;
+                const selectedYear = document.getElementById('year-select').value;
+                const selectedTmdbRating = document.getElementById('tmdb-select').value;
+            
+                const filteredMovies = movies.filter(movie => {
+                    return (
+                        (selectedGenre === '' || movie.genre === selectedGenre) &&
+                        (selectedYear === '' || movie.year.toString() === selectedYear) &&
+                        (selectedTmdbRating === '' || movie.tmdbRating.toString() === selectedTmdbRating)
+                    );
                 });
+            
+                displayMovies(filteredMovies);
             }
-        }
-        //Filtering
-        //Filter By: Genre
-        const genreMap = {
-         action: 28,
-        adventure: 12,
-        comedy: 35,
-        animation: 16,
-        history: 36,
-        horror: 27,
-        scifi: 878,
-        romance: 10749,
-        fantasy: 14,
-        drama: 18,
-        thriller: 53
-        };
-        let filteredMovies=[];
-        function filterGenres(genre) {
-            filteredMovies=[];
-            genre=genre.toLowerCase();
-            const genreId=genreMap[genre];
-            if (genreId) {
-                filteredMovies=movieData.filter(movie => movie.genreArray.includes(genreId));
-            }
-            else {
-                console.log("Genre not found");
-            }
-        }
-        function getGenreName(value) {
-            return Object.keys(genreMap).find(key => genreMap[key] === value);
-        }
-        //not all genres are listed in the genremap. Use this method in if statements
-        function isGenreIncluded(id) {
-            let genreIds = Object.values(genreMap);
-            return genreIds.includes(id);
-        }
+            
+            // Event listener for the apply filter button
+            document.getElementById('apply-filter').addEventListener('click', applyFilters);
+            
+            // Fetch movies when the page loads
+            fetchMovies();
 
 
-
+            //page view
         function DisplayHeader() {
             const headerSection = document.getElementById("movie-lib-head");
             if (moviesArray.length > 0) {
@@ -445,3 +518,5 @@ function DisplayData() {
 
 
 // watchlist page
+
+
