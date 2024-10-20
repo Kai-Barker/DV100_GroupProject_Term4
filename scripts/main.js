@@ -267,20 +267,55 @@ function DisplayHomeHeader() {
         // `;
     }
 }
+//Filtering
+        //Filter By: Genre
+        const genreMap = {
+            action: 28,
+           adventure: 12,
+           comedy: 35,
+           animation: 16,
+           history: 36,
+           horror: 27,
+           scifi: 878,
+           romance: 10749,
+           fantasy: 14,
+           drama: 18,
+           thriller: 53
+           };
+           let filteredMovies=[];
+           function filterGenres(genre) {
+               filteredMovies=[];
+               genre=genre.toLowerCase();
+               const genreId=genreMap[genre];
+               if (genreId) {
+                   filteredMovies=movieData.filter(movie => movie.genreArray.includes(genreId));
+               }
+               else {
+                   console.log("Genre not found");
+               }
+           }
+           function getGenreName(value) {
+               return Object.keys(genreMap).find(key => genreMap[key] === value);
+           }
+           //not all genres are listed in the genremap. Use this method in if statements
+           function isGenreIncluded(id) {
+               let genreIds = Object.values(genreMap);
+               return genreIds.includes(id);
+           }
 //Collect data from API
-function MineMovies(temp) {
-    console.log("Here is temp"+temp);
-    //Creating a new array with what we need
-    moviesArray = temp.map(item => {
-        return {
-            title: item.title,
-            rating: item.imdbRating,
-            image: item.image,
-            length: item.timeline
-        }
-    });
-    console.log(moviesArray);
-}
+// function MineMovies(temp) {
+//     console.log("Here is temp"+temp);
+//     //Creating a new array with what we need
+//     moviesArray = temp.map(item => {
+//         return {
+//             title: item.title,
+//             rating: item.imdbRating,
+//             image: item.image,
+//             length: item.timeline
+//         }
+//     });
+//     console.log(moviesArray);
+// }
 function DisplayData() {
     // Display 3 movies in a carousel
     const carouselMovies = moviesArray.slice(0, 3);
