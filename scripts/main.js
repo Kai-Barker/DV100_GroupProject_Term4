@@ -411,7 +411,7 @@ function DisplayData() {
                     movieDiv.innerHTML = `
                         <img src="https://image.tmdb.org/t/p/w500${movie.image}" alt="${movie.title}" class="movie-image" />
                         <h2>${movie.title}</h2>
-                        <p>Rating: ${movie.rating}</p>
+                        <p>Rating: ${movie.rating} "👍(•_•)👍"</p>
                     `;
                     rowDiv.appendChild(movieDiv);
                 });
