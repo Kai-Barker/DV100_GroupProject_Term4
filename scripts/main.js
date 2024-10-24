@@ -322,18 +322,19 @@ function DisplayHomeHeader() {
         let filteredMovies = [];
         let movieData = []; // Ensure this is populated with your movie data
         
-        // function showLoader() {
-        //     document.getElementById('loader').style.display = 'block';
-        //     document.getElementById('content').style.display = 'none';
-        // }
+        function showLoader() {
+            document.getElementById('loader').style.display = 'block';
+            document.getElementById('content').style.display = 'none';
+        }
 
-        // function hideLoader() {
-        //     document.getElementById('loader').style.display = 'none';
-        //     document.getElementById('content').style.display = 'block';
-        // }
+        function hideLoader() {
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+        }
 
         async function fetchMovies() {
-            // showLoader(); // Show the loader
+            showLoader(); // Show the loader
+
             const options = {
                 method: 'GET',
                 headers: {
@@ -352,14 +353,14 @@ function DisplayHomeHeader() {
                     release_date: movie.release_date,
                     genreArray: movie.genre_ids
                 }));
-                // hideLoader(); // Hide the loader after data is fetched
+                hideLoader(); // Hide the loader after data is fetched
                 filterMovies(); // Call filterMovies to display the initial data
             } catch (err) {
-                // hideLoader(); // Hide the loader on error
+                hideLoader(); // Hide the loader on error
                 document.getElementById('filteredMovies').innerHTML = "<p>Failed to load data.</p>";
                 console.error(err);
             }
-        };
+        }
 
         function filterMovies() {
             const selectedGenre = document.getElementById('genreSelect').value;
@@ -544,7 +545,6 @@ function DisplayData() {
 
 
 // watchlist page
-
 
 
 
