@@ -106,7 +106,7 @@ const nameTextField=document.getElementById("nameTextField");
 let username="Kai"
 const emailTextField=document.getElementById("emailTextField");
 let email="kai@gmail.com" //unTextField.value; //May not work as intended
-console.log(email);
+
 let password="KingShrek12!"
 let user1=new User(username, email, password);
 //Email must have an @ symbol
@@ -170,7 +170,11 @@ function loginConfirmation(event) {
 function retrieveLogin(){
     let formData= localStorage.getItem("userData");
     console.log(JSON.parse(formData));
-    
+    formData=JSON.parse(formData);
+    if (pageCheck=="index") {
+        document.getElementById("homeWelcome");
+        homeWelcome.innerHTML = formData.email;
+    }
 }
 
 //Log In to an account by checking if everything is the same
@@ -516,7 +520,7 @@ function DisplayData() {
                     movieDiv.innerHTML = `
                         <img src="https://image.tmdb.org/t/p/w500${movie.image}" alt="${movie.title}" class="movie-image" />
                         <h2>${movie.title}</h2>
-                        <p>Rating: ${movie.rating}</p>
+                        <p>Rating: ${movie.rating} "👍(•_•)👍"</p>
                     `;
                     rowDiv.appendChild(movieDiv);
                 });
