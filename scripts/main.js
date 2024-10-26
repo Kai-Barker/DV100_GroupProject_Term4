@@ -413,7 +413,7 @@ function DisplayData() {
                         <img src="https://image.tmdb.org/t/p/w500${movie.image}" alt="${movie.title}" class="movie-image" />
                         <h2>${movie.title}</h2>
                         <p>Rating: ${movie.rating} "👍(•_•)👍"</p>
-                        <button onclick="individualMovieLogger('${movie.title}')">View More ^^</button>
+                        <a href="../pages/movie.html"><button onclick="individualMovieLogger('${movie.title}')">View More ^^</button> </a>
                     `;
                     rowDiv.appendChild(movieDiv);
                     //<a href="../pages/movie.html"></a>
@@ -435,7 +435,7 @@ function DisplayData() {
             }
         }
         function individualMovieFetcher(){
-            
+
         }
         
         // Display the movies when the page loads
