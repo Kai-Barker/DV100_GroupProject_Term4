@@ -503,20 +503,38 @@ function DisplayData() {
                 const rowMovies = moviesArray.slice(i * 5, (i + 1) * 5); // Get 5 movies for each row
                 const rowDiv = document.createElement("div");
                 rowDiv.className = "movie-body";
-        
+                
                 rowMovies.forEach(movie => {
                     const movieDiv = document.createElement("div");
                     movieDiv.className = "movie-item";
+                    movieDiv.id = movie.title;
                     movieDiv.innerHTML = `
                         <img src="https://image.tmdb.org/t/p/w500${movie.image}" alt="${movie.title}" class="movie-image" />
                         <h2>${movie.title}</h2>
                         <p>Rating: ${movie.rating} "👍(•_•)👍"</p>
+                        <a href="../pages/movie.html"><button onclick="individualMovieLogger('${movie.title}')">View More ^^</button> </a>
                     `;
                     rowDiv.appendChild(movieDiv);
+                    //<a href="../pages/movie.html"></a>
                 });
         
                 bodySection.appendChild(rowDiv);
             }
+        }
+        function individualMovieLogger(tempTitle) {
+            const index=moviesArray.findIndex(movie => movie.title == tempTitle)
+            if (index!==-1) {
+                sessionStorage.setItem("selectedMovie", JSON.stringify(moviesArray[index]))
+                console.log("Movie now in storage: ");
+                console.log(moviesArray[index]);
+            }
+            else{
+                console.log("No movie found >:(");
+                
+            }
+        }
+        function individualMovieFetcher(){
+
         }
         
         // Display the movies when the page loads
