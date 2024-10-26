@@ -1,5 +1,6 @@
 // Collect data from API
-console.log("Initializing Movie Library");
+console.log("Beep Boop the scripts have arrived!");
+
 let moviesArray = []; // Ensure moviesArray is defined globally
 let pageCheck="";
 class Movie{
@@ -435,7 +436,33 @@ function DisplayData() {
             }
         }
         function individualMovieFetcher(){
-
+            const temp=JSON.parse(sessionStorage.getItem("selectedMovie"));
+            const headerHomeSection=document.getElementById("IndividualMovieSection");
+            const headerTitleSection=document.getElementById("IndividualMovieTitle");
+            const headerGenre1Section=document.getElementById("IndividualMovieGenre1");
+            const headerGenre2Section=document.getElementById("IndividualMovieGenre2");
+            const headerGenre3Section=document.getElementById("IndividualMovieGenre3");
+            console.log(temp);
+            console.log(getGenreName(temp.genreArray[0]));
+            headerHomeSection.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${temp.image})`;
+            headerTitleSection.innerHTML=temp.title;
+            headerGenre1Section.innerHTML=getGenreName(temp.genreArray[0]).charAt(0).toUpperCase()+getGenreName(temp.genreArray[0]).slice(1);
+            if (temp.genreArray[1] && isGenreIncluded(temp.genreArray[1])) {
+            headerGenre2Section.innerHTML=getGenreName(temp.genreArray[1]).charAt(0).toUpperCase()+getGenreName(temp.genreArray[1]).slice(1);
+                if (temp.genreArray[2] && isGenreIncluded(temp.genreArray[2])) {
+                headerGenre3Section.innerHTML=getGenreName(temp.genreArray[2]).charAt(0).toUpperCase()+getGenreName(temp.genreArray[2]).slice(1);
+                }
+                else{
+                headerGenre3Section.innerHTML="";
+                }
+            }
+            else if(temp.genreArray[2] && isGenreIncluded(temp.genreArray[2])){
+                headerGenre2Section.innerHTML=getGenreName(temp.genreArray[2]).charAt(0).toUpperCase()+getGenreName(temp.genreArray[2]).slice(1);
+                headerGenre3Section.innerHTML="";
+            }
+            else{
+                headerGenre2Section.innerHTML="";
+            }
         }
         
         // Display the movies when the page loads
