@@ -275,6 +275,7 @@ function DisplayHomeHeader() {
         //Filter By: Genre
         const genreMap = {
             action: 28,
+<<<<<<< Updated upstream
            adventure: 12,
            comedy: 35,
            animation: 16,
@@ -306,6 +307,104 @@ function DisplayHomeHeader() {
                let genreIds = Object.values(genreMap);
                return genreIds.includes(id);
            }
+=======
+            adventure: 12,
+            comedy: 35,
+            animation: 16,
+            history: 36,
+            horror: 27,
+            scifi: 878,
+            romance: 10749,
+            fantasy: 14,
+            drama: 18,
+            thriller: 53
+        };
+        
+        let filteredMovies = [];
+        let movieData = []; // Ensure this is populated with your movie data
+        
+        // function showLoader() {
+        //     document.getElementById('loader').style.display = 'block';
+        //     document.getElementById('content').style.display = 'none';
+        // }
+
+        // function hideLoader() {
+        //     document.getElementById('loader').style.display = 'none';
+        //     document.getElementById('content').style.display = 'block';
+        // }
+
+        async function fetchMovies() {
+            // showLoader(); // Show the loader
+
+            const options = {
+                method: 'GET',
+                headers: {
+                    accept: 'application/json',
+                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMmQ3MDA5YmMyZDdhNWU4NmMwM2VhZTY5NjVjY2UyZiIsIm5iZiI6MTcyOTQ5NzcyMy43ODc2OTgsInN1YiI6IjY3MDY4YWQ4MDAzYzkyMTRhMGIzYzU1NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.NcFq9OGjkQWPfXNMVa1lWlHQ-3xfOH-GbfvjXK_XZ9Q' // Replace with your actual API key
+                }
+            };
+
+            try {
+                const response = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options);
+                const data = await response.json();
+                movieData = data.results.map(movie => ({
+                    title: movie.title,
+                    vote_average: movie.vote_average,
+                    poster_path: movie.poster_path,
+                    release_date: movie.release_date,
+                    genreArray: movie.genre_ids
+                }));
+                // hideLoader(); // Hide the loader after data is fetched
+                filterMovies(); // Call filterMovies to display the initial data
+            } catch (err) {
+                // hideLoader(); // Hide the loader on error
+                document.getElementById('filteredMovies').innerHTML = "<p>Failed to load data.</p>";
+                console.error(err);
+            }
+        }
+
+        function filterMovies() {
+            const selectedGenre = document.getElementById('genreSelect').value;
+            const selectedYear = document.getElementById('yearSelect').value;
+            const selectedScore = document.getElementById('scoreSelect').value;
+
+            filteredMovies = movieData.filter(movie => {
+                const matchesGenre = selectedGenre ? movie.genreArray.includes(genreMap[selectedGenre]) : true;
+                const matchesYear = selectedYear ? movie.release_date.split('-')[0] === selectedYear : true;
+                const matchesScore = selectedScore ? movie.vote_average >= selectedScore : true;
+
+                return matchesGenre && matchesYear && matchesScore;
+            });
+
+            displayFilteredMovies();
+        }
+
+        function displayFilteredMovies() {
+            const filteredMoviesContainer = document.getElementById('filteredMovies');
+            filteredMoviesContainer.innerHTML = ''; // Clear previous results
+
+            if (filteredMovies.length > 0) {
+                filteredMovies.forEach(movie => {
+                    const movieDiv = document.createElement('div');
+                    movieDiv.className = 'movie-item mb-3';
+                    movieDiv.innerHTML = `
+                        <h3>${movie.title}</h3>
+                        <p>Rating: ${movie.vote_average}</p>
+                        <p>Release Year: ${movie.release_date.split('-')[0]}</p>
+                        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" class="img-fluid" />
+                    `;
+                    filteredMoviesContainer.appendChild(movieDiv);
+                });
+            } else {
+                filteredMoviesContainer.innerHTML = '<p>No movies found for the selected filters.</p>';
+            }
+        }
+
+        // Call fetchMovies on page load
+        window.onload = fetchMovies;
+
+           
+>>>>>>> Stashed changes
 //Collect data from API
 // function MineMovies(temp) {
 //     console.log("Here is temp"+temp);
