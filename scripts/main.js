@@ -1,5 +1,6 @@
 // Collect data from API
-console.log("Initializing Movie Library");
+console.log("Beep Boop the scripts have arrived!");
+
 let moviesArray = []; // Ensure moviesArray is defined globally
 let pageCheck="";
 class Movie{
@@ -20,9 +21,6 @@ class ActionMovie extends Movie{
         super(title,rating,image, genreArray);
     }
 }
-
-let movieData=[];
-
 
 //let imageHTML=document.getElementById('body'); //Image link to page, must be changed
 //let img=document.createElement('img');
@@ -78,8 +76,6 @@ function DisplayData(){
     buttonClicked++;
 }
 
-
-
 //1 parent class
 //2 subclasses based on genre
 let horrorMovie1=new HorrorMovie();
@@ -87,11 +83,10 @@ let horrorMovie2=new HorrorMovie();
 let actionMovie1=new ActionMovie();
 let actionMovie2=new ActionMovie();
 //2 objects per subclass
+
 // Log in / Sign up
 
 //Sign Up
-
-
 //get email data from text field in html
 class User{
     constructor(nameIn, emailIn, passwordIn){
@@ -121,7 +116,6 @@ ValidateEmail(email);
 //validate password
 //For this i used a regex which i found at https://www.geeksforgeeks.org/javascript-program-to-check-if-a-string-contains-uppercase-lowercase-special-characters-and-numeric-values/ 
 //This regex will test the string for at least 1: lowercase letter, capital letter, digit, special character
-
 
 let isPasswordValid=false;
   function isAllCharPresent(str) {
@@ -183,21 +177,6 @@ const testPass="QueenShrek1!"
 let inputEmail="kaikai@gmail.com"
 let inputPass="QueenShrek1!"
 //Check if the same
-//Will edit in future depending if we go with objects or not
-// function LogIn() {
-//     if ((testMail==inputEmail&&testPass==inputPass)) {
-//         return true;
-//     }
-//     else{
-//         return false;
-//     }
-// }
-// if (LogIn()) {
-//     console.log("You shall pass!");
-// }
-// else{
-//     console.log("You Shall not pass!");
-// }
 //With an object, easy to extend to look at if theres an array of objects. Not sure how user storage works yet
 let user = {
     email: "kaikai@gmail.com",
@@ -220,9 +199,6 @@ if (LogInObj()) {
 else{
     console.log("Nuh uh");   
 }
-
-
-
 // Homepage / index
 
 function DisplayHomeHeader() {
@@ -255,27 +231,12 @@ function DisplayHomeHeader() {
         else{
             headerGenre2Section.innerHTML="";
         }
-        
-        
-        
-        
-        
-        
-        // headerHomeSection.innerHTML = `
-        //     <div class="header-info">
-        //         <h1>${featuredMovie.title}</h1>
-        //         <p>Rating: ${featuredMovie.rating}</p>
-        //         <button class="btn btn-primary">Watch Now</button>
-        //         <button class="btn btn-secondary">Add to Watchlist</button>
-        //     </div>
-        // `;
     }
 }
 //Filtering
         //Filter By: Genre
         const genreMap = {
             action: 28,
-<<<<<<< Updated upstream
            adventure: 12,
            comedy: 35,
            animation: 16,
@@ -307,118 +268,7 @@ function DisplayHomeHeader() {
                let genreIds = Object.values(genreMap);
                return genreIds.includes(id);
            }
-=======
-            adventure: 12,
-            comedy: 35,
-            animation: 16,
-            history: 36,
-            horror: 27,
-            scifi: 878,
-            romance: 10749,
-            fantasy: 14,
-            drama: 18,
-            thriller: 53
-        };
-        
-        let filteredMovies = [];
-        let movieData = []; // Ensure this is populated with your movie data
-        
-        // function showLoader() {
-        //     document.getElementById('loader').style.display = 'block';
-        //     document.getElementById('content').style.display = 'none';
-        // }
 
-        // function hideLoader() {
-        //     document.getElementById('loader').style.display = 'none';
-        //     document.getElementById('content').style.display = 'block';
-        // }
-
-        async function fetchMovies() {
-            // showLoader(); // Show the loader
-
-            const options = {
-                method: 'GET',
-                headers: {
-                    accept: 'application/json',
-                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMmQ3MDA5YmMyZDdhNWU4NmMwM2VhZTY5NjVjY2UyZiIsIm5iZiI6MTcyOTQ5NzcyMy43ODc2OTgsInN1YiI6IjY3MDY4YWQ4MDAzYzkyMTRhMGIzYzU1NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.NcFq9OGjkQWPfXNMVa1lWlHQ-3xfOH-GbfvjXK_XZ9Q' // Replace with your actual API key
-                }
-            };
-
-            try {
-                const response = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options);
-                const data = await response.json();
-                movieData = data.results.map(movie => ({
-                    title: movie.title,
-                    vote_average: movie.vote_average,
-                    poster_path: movie.poster_path,
-                    release_date: movie.release_date,
-                    genreArray: movie.genre_ids
-                }));
-                // hideLoader(); // Hide the loader after data is fetched
-                filterMovies(); // Call filterMovies to display the initial data
-            } catch (err) {
-                // hideLoader(); // Hide the loader on error
-                document.getElementById('filteredMovies').innerHTML = "<p>Failed to load data.</p>";
-                console.error(err);
-            }
-        }
-
-        function filterMovies() {
-            const selectedGenre = document.getElementById('genreSelect').value;
-            const selectedYear = document.getElementById('yearSelect').value;
-            const selectedScore = document.getElementById('scoreSelect').value;
-
-            filteredMovies = movieData.filter(movie => {
-                const matchesGenre = selectedGenre ? movie.genreArray.includes(genreMap[selectedGenre]) : true;
-                const matchesYear = selectedYear ? movie.release_date.split('-')[0] === selectedYear : true;
-                const matchesScore = selectedScore ? movie.vote_average >= selectedScore : true;
-
-                return matchesGenre && matchesYear && matchesScore;
-            });
-
-            displayFilteredMovies();
-        }
-
-        function displayFilteredMovies() {
-            const filteredMoviesContainer = document.getElementById('filteredMovies');
-            filteredMoviesContainer.innerHTML = ''; // Clear previous results
-
-            if (filteredMovies.length > 0) {
-                filteredMovies.forEach(movie => {
-                    const movieDiv = document.createElement('div');
-                    movieDiv.className = 'movie-item mb-3';
-                    movieDiv.innerHTML = `
-                        <h3>${movie.title}</h3>
-                        <p>Rating: ${movie.vote_average}</p>
-                        <p>Release Year: ${movie.release_date.split('-')[0]}</p>
-                        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" class="img-fluid" />
-                    `;
-                    filteredMoviesContainer.appendChild(movieDiv);
-                });
-            } else {
-                filteredMoviesContainer.innerHTML = '<p>No movies found for the selected filters.</p>';
-            }
-        }
-
-        // Call fetchMovies on page load
-        window.onload = fetchMovies;
-
-           
->>>>>>> Stashed changes
-//Collect data from API
-// function MineMovies(temp) {
-//     console.log("Here is temp"+temp);
-//     //Creating a new array with what we need
-//     moviesArray = temp.map(item => {
-//         return {
-//             title: item.title,
-//             rating: item.imdbRating,
-//             image: item.image,
-//             length: item.timeline
-//         }
-//     });
-//     console.log(moviesArray);
-// }
 function DisplayData() {
     // Display 3 movies in a carousel
     const carouselMovies = moviesArray.slice(0, 3);
@@ -475,6 +325,118 @@ function DisplayData() {
             }
         }
         //Filtering
+        //Filter By: Genre
+        // const genreMap = {
+        //     action: 28,
+        //    adventure: 12,
+        //    comedy: 35,
+        //    animation: 16,
+        //    history: 36,
+        //    horror: 27,
+        //    scifi: 878,
+        //    romance: 10749,
+        //    fantasy: 14,
+        //    drama: 18,
+        //    thriller: 53
+        //    };
+        //    let filteredMovies=[];
+        //    function filterGenres(genre) {
+        //        filteredMovies=[];
+        //        genre=genre.toLowerCase();
+        //        const genreId=genreMap[genre];
+        //        if (genreId) {
+        //            filteredMovies=movieData.filter(movie => movie.genreArray.includes(genreId));
+        //        }
+        //        else {
+        //            console.log("Genre not found");
+        //        }
+        //    }
+        //    function getGenreName(value) {
+        //        return Object.keys(genreMap).find(key => genreMap[key] === value);
+        //    }
+        //    //not all genres are listed in the genremap. Use this method in if statements
+        //    function isGenreIncluded(id) {
+        //        let genreIds = Object.values(genreMap);
+        //        return genreIds.includes(id);
+        //    }
+        
+        let movieData = []; // Ensure this is populated with your movie data
+        
+        function showLoader() {
+            document.getElementById('loader').style.display = 'block';
+            document.getElementById('content').style.display = 'none';
+        }
+
+        function hideLoader() {
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+        }
+
+        async function fetchMovies() {
+            const options = {
+                method: 'GET',
+                headers: {
+                    accept: 'application/json',
+                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMmQ3MDA5YmMyZDdhNWU4NmMwM2VhZTY5NjVjY2UyZiIsIm5iZiI6MTcyOTQ5NzcyMy43ODc2OTgsInN1YiI6IjY3MDY4YWQ4MDAzYzkyMTRhMGIzYzU1NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.NcFq9OGjkQWPfXNMVa1lWlHQ-3xfOH-GbfvjXK_XZ9Q' // Replace with your actual API key
+                }
+            };
+
+            try {
+                const response = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options);
+                const data = await response.json();
+                movieData = data.results.map(movie => ({
+                    title: movie.title,
+                    vote_average: movie.vote_average,
+                    poster_path: movie.poster_path,
+                    release_date: movie.release_date,
+                    genreArray: movie.genre_ids
+                }));
+                filterMovies(); // Call filterMovies to display the initial data
+            } catch (err) {
+                document.getElementById('filteredMovies').innerHTML = "<p>Failed to load data.</p>";
+                console.error(err);
+            }
+        };
+
+        function filterMovies() {
+            const selectedGenre = document.getElementById('genreSelect').value;
+            const selectedYear = document.getElementById('yearSelect').value;
+            const selectedScore = document.getElementById('scoreSelect').value;
+
+            filteredMovies = movieData.filter(movie => {
+                const matchesGenre = selectedGenre ? movie.genreArray.includes(genreMap[selectedGenre]) : true;
+                const matchesYear = selectedYear ? movie.release_date.split('-')[0] === selectedYear : true;
+                const matchesScore = selectedScore ? movie.vote_average >= selectedScore : true;
+
+                return matchesGenre && matchesYear && matchesScore;
+            });
+
+            displayFilteredMovies();
+        }
+
+        function displayFilteredMovies() {
+            const filteredMoviesContainer = document.getElementById('filteredMovies');
+            filteredMoviesContainer.innerHTML = ''; // Clear previous results
+
+            if (filteredMovies.length > 0) {
+                filteredMovies.forEach(movie => {
+                    const movieDiv = document.createElement('div');
+                    movieDiv.className = 'movie-item mb-3';
+                    movieDiv.innerHTML = `
+                        <h3>${movie.title}</h3>
+                        <p>Rating: ${movie.vote_average}</p>
+                        <p>Release Year: ${movie.release_date.split('-')[0]}</p>
+                        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" class="img-fluid" />
+                    `;
+                    filteredMoviesContainer.appendChild(movieDiv);
+                });
+            } else {
+                filteredMoviesContainer.innerHTML = '<p>No movies found for the selected filters.</p>';
+            }
+        }
+
+        // Call fetchMovies on page load
+        window.onload = fetchMovies;
        
     
             //page view
@@ -534,7 +496,33 @@ function DisplayData() {
             }
         }
         function individualMovieFetcher(){
-
+            const temp=JSON.parse(sessionStorage.getItem("selectedMovie"));
+            const headerHomeSection=document.getElementById("IndividualMovieSection");
+            const headerTitleSection=document.getElementById("IndividualMovieTitle");
+            const headerGenre1Section=document.getElementById("IndividualMovieGenre1");
+            const headerGenre2Section=document.getElementById("IndividualMovieGenre2");
+            const headerGenre3Section=document.getElementById("IndividualMovieGenre3");
+            console.log(temp);
+            console.log(getGenreName(temp.genreArray[0]));
+            headerHomeSection.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${temp.image})`;
+            headerTitleSection.innerHTML=temp.title;
+            headerGenre1Section.innerHTML=getGenreName(temp.genreArray[0]).charAt(0).toUpperCase()+getGenreName(temp.genreArray[0]).slice(1);
+            if (temp.genreArray[1] && isGenreIncluded(temp.genreArray[1])) {
+            headerGenre2Section.innerHTML=getGenreName(temp.genreArray[1]).charAt(0).toUpperCase()+getGenreName(temp.genreArray[1]).slice(1);
+                if (temp.genreArray[2] && isGenreIncluded(temp.genreArray[2])) {
+                headerGenre3Section.innerHTML=getGenreName(temp.genreArray[2]).charAt(0).toUpperCase()+getGenreName(temp.genreArray[2]).slice(1);
+                }
+                else{
+                headerGenre3Section.innerHTML="";
+                }
+            }
+            else if(temp.genreArray[2] && isGenreIncluded(temp.genreArray[2])){
+                headerGenre2Section.innerHTML=getGenreName(temp.genreArray[2]).charAt(0).toUpperCase()+getGenreName(temp.genreArray[2]).slice(1);
+                headerGenre3Section.innerHTML="";
+            }
+            else{
+                headerGenre2Section.innerHTML="";
+            }
         }
         
         // Display the movies when the page loads
@@ -545,8 +533,6 @@ function DisplayData() {
 
         console.log("👍(•_•)👍");
         
-
-
 // movie page
 
 
