@@ -1,5 +1,6 @@
 // Collect data from API
-console.log("Initializing Movie Library");
+console.log("Beep Boop the scripts have arrived!");
+
 let moviesArray = []; // Ensure moviesArray is defined globally
 let pageCheck="";
 class Movie{
@@ -104,7 +105,7 @@ const nameTextField=document.getElementById("nameTextField");
 let username="Kai"
 const emailTextField=document.getElementById("emailTextField");
 let email="kai@gmail.com" //unTextField.value; //May not work as intended
-console.log(email);
+
 let password="KingShrek12!"
 let user1=new User(username, email, password);
 //Email must have an @ symbol
@@ -168,7 +169,11 @@ function loginConfirmation(event) {
 function retrieveLogin(){
     let formData= localStorage.getItem("userData");
     console.log(JSON.parse(formData));
-    
+    formData=JSON.parse(formData);
+    if (pageCheck=="index") {
+        document.getElementById("homeWelcome");
+        homeWelcome.innerHTML = formData.email;
+    }
 }
 
 //Log In to an account by checking if everything is the same
@@ -337,159 +342,43 @@ function DisplayData() {
     buttonClicked++;
 }
 
-
-
-
-
-
-
-
-
 // Lib-movies page
 
-
-
-    // //Sorting & Filtering
-    //     //Sorting
-    //     //Sort by: Rating Asc Desc, Title Alphebetical A-Z
-    //     function sortAlphabetically(ascending) {
-    //         // A-Z
-    //         if (ascending==true) {
-    //             movieData.sort((a,b) => {
-    //                 return a.title.localeCompare(b.title);
-    //             });
+    //Sorting & Filtering
+        //Sorting
+        //Sort by: Rating Asc Desc, Title Alphebetical A-Z
+        function sortAlphabetically(ascending) {
+            // A-Z
+            if (ascending==true) {
+                movieData.sort((a,b) => {
+                    return a.title.localeCompare(b.title);
+                });
                 
-    //         }
-    //         // Z-A
-    //         else {
-    //             movieData.sort((a,b) => {
-    //                 return b.title.localeCompare(a.title);
-    //             });
-                
-    //         }
-    //     }
-
-    //     function sortByRating(order) {
-    //         if (order==true) {
-    //             movieData.sort((a,b) => {
-    //                 return b.rating -a.rating;
-    //             });
-    //         }
-    //         else {
-    //             movieData.sort((a,b) => {
-    //                 return a.rating -b.rating;
-    //             });
-    //         }
-    //     }
-    //     //Filtering
-    //     //Filter By: Genre
-    //     const genreMap = {
-    //      action: 28,
-    //     adventure: 12,
-    //     comedy: 35,
-    //     animation: 16,
-    //     history: 36,
-    //     horror: 27,
-    //     scifi: 878,
-    //     romance: 10749,
-    //     fantasy: 14,
-    //     drama: 18,
-    //     thriller: 53
-    //     };
-    //     // Function to apply the genre filter
-    //     function applyGenreFilter() {
-    //         const genreSelect = document.getElementById("genre-select");
-    //         const selectedGenre = genreSelect.value;
-
-    //         // Call the existing filtering function with the selected genre
-    //         if (selectedGenre) {
-    //             filterGenres(selectedGenre); // Assuming filterGenres is your existing function
-    //         } else {
-    //             // If no genre is selected, you might want to reset the display
-    //             DisplayMovieRows(); // Display all movies or handle accordingly
-    //         }
-    //     }
-
-    //New filter system/function
-            let movies = [
-                [
-                    {
-                        "title": "Movie 1",
-                        "genre": "action",
-                        "year": 2023,
-                        "tmdbRating": 5
-                    },
-                    {
-                        "title": "Movie 2",
-                        "genre": "comedy",
-                        "year": 2022,
-                        "tmdbRating": 4
-                    }
-                ]
-            ]; // Array to hold the fetched movie data
-
-            // Function to fetch movies from the API
-            function fetchMovies() {
-                fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1') // Replace with your actual API endpoint
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok ' + response.statusText);
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        movies = data; // Store the fetched movies
-                        displayMovies(movies); // Display all movies initially
-                    })
-                    .catch(error => {
-                        console.error('There was a problem with the fetch operation:', error);
-                        // Optionally, display an error message to the user
-                        document.getElementById('movie-lib-body').innerText = 'Failed to load movies. Please try again later.';
-                    });
             }
-            
-            // Function to display movies
-            function displayMovies(filteredMovies) {
-                const movieLibBody = document.getElementById('movie-lib-body');
-                movieLibBody.innerHTML = ''; // Clear previous content
-            
-                filteredMovies.forEach(movie => {
-                    const movieElement = document.createElement('div');
-                    movieElement.className = 'movie-item';
-                    movieElement.innerHTML = `
-                        <h2>${movie.title}</h2>
-                        <p>Genre: ${movie.genre}</p>
-                        <p>Year: ${movie.year}</p>
-                        <p>TMDB Rating: ${movie.tmdbRating} Stars</p>
-                    `;
-                    movieLibBody.appendChild(movieElement);
+            // Z-A
+            else {
+                movieData.sort((a,b) => {
+                    return b.title.localeCompare(a.title);
+                });
+                
+            }
+        }
+
+        function sortByRating(order) {
+            if (order==true) {
+                movieData.sort((a,b) => {
+                    return b.rating -a.rating;
                 });
             }
-            
-            // Function to apply filters
-            function applyFilters() {
-                const selectedGenre = document.getElementById('genre-select').value;
-                const selectedYear = document.getElementById('year-select').value;
-                const selectedTmdbRating = document.getElementById('tmdb-select').value;
-            
-                const filteredMovies = movies.filter(movie => {
-                    return (
-                        (selectedGenre === '' || movie.genre === selectedGenre) &&
-                        (selectedYear === '' || movie.year.toString() === selectedYear) &&
-                        (selectedTmdbRating === '' || movie.tmdbRating.toString() === selectedTmdbRating)
-                    );
+            else {
+                movieData.sort((a,b) => {
+                    return a.rating -b.rating;
                 });
-            
-                displayMovies(filteredMovies);
             }
-            
-            // Event listener for the apply filter button
-            document.getElementById('apply-filter').addEventListener('click', applyFilters);
-            
-            // Fetch movies when the page loads
-            fetchMovies();
-
-
+        }
+        //Filtering
+       
+    
             //page view
         function DisplayHeader() {
             const headerSection = document.getElementById("movie-lib-head");
@@ -516,19 +405,63 @@ function DisplayData() {
                 const rowMovies = moviesArray.slice(i * 5, (i + 1) * 5); // Get 5 movies for each row
                 const rowDiv = document.createElement("div");
                 rowDiv.className = "movie-body";
-        
+                
                 rowMovies.forEach(movie => {
                     const movieDiv = document.createElement("div");
                     movieDiv.className = "movie-item";
+                    movieDiv.id = movie.title;
                     movieDiv.innerHTML = `
                         <img src="https://image.tmdb.org/t/p/w500${movie.image}" alt="${movie.title}" class="movie-image" />
                         <h2>${movie.title}</h2>
-                        <p>Rating: ${movie.rating}</p>
+                        <p>Rating: ${movie.rating} "👍(•_•)👍"</p>
+                        <a href="../pages/movie.html"><button onclick="individualMovieLogger('${movie.title}')">View More ^^</button> </a>
                     `;
                     rowDiv.appendChild(movieDiv);
+                    //<a href="../pages/movie.html"></a>
                 });
         
                 bodySection.appendChild(rowDiv);
+            }
+        }
+        function individualMovieLogger(tempTitle) {
+            const index=moviesArray.findIndex(movie => movie.title == tempTitle)
+            if (index!==-1) {
+                sessionStorage.setItem("selectedMovie", JSON.stringify(moviesArray[index]))
+                console.log("Movie now in storage: ");
+                console.log(moviesArray[index]);
+            }
+            else{
+                console.log("No movie found >:(");
+                
+            }
+        }
+        function individualMovieFetcher(){
+            const temp=JSON.parse(sessionStorage.getItem("selectedMovie"));
+            const headerHomeSection=document.getElementById("IndividualMovieSection");
+            const headerTitleSection=document.getElementById("IndividualMovieTitle");
+            const headerGenre1Section=document.getElementById("IndividualMovieGenre1");
+            const headerGenre2Section=document.getElementById("IndividualMovieGenre2");
+            const headerGenre3Section=document.getElementById("IndividualMovieGenre3");
+            console.log(temp);
+            console.log(getGenreName(temp.genreArray[0]));
+            headerHomeSection.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${temp.image})`;
+            headerTitleSection.innerHTML=temp.title;
+            headerGenre1Section.innerHTML=getGenreName(temp.genreArray[0]).charAt(0).toUpperCase()+getGenreName(temp.genreArray[0]).slice(1);
+            if (temp.genreArray[1] && isGenreIncluded(temp.genreArray[1])) {
+            headerGenre2Section.innerHTML=getGenreName(temp.genreArray[1]).charAt(0).toUpperCase()+getGenreName(temp.genreArray[1]).slice(1);
+                if (temp.genreArray[2] && isGenreIncluded(temp.genreArray[2])) {
+                headerGenre3Section.innerHTML=getGenreName(temp.genreArray[2]).charAt(0).toUpperCase()+getGenreName(temp.genreArray[2]).slice(1);
+                }
+                else{
+                headerGenre3Section.innerHTML="";
+                }
+            }
+            else if(temp.genreArray[2] && isGenreIncluded(temp.genreArray[2])){
+                headerGenre2Section.innerHTML=getGenreName(temp.genreArray[2]).charAt(0).toUpperCase()+getGenreName(temp.genreArray[2]).slice(1);
+                headerGenre3Section.innerHTML="";
+            }
+            else{
+                headerGenre2Section.innerHTML="";
             }
         }
         

@@ -22,7 +22,7 @@
 
 </head>
 
-<body style="background-color: black;" onload="pageCheck=`index`; retrieveLogin();">
+<body style="background-color: black; " onload="pageCheck=`index`; retrieveLogin();">
 
   <nav class="navbar navbar-expand-lg" style="background-color: #595959;">
     <div class="container-fluid">
@@ -62,7 +62,9 @@
       </div>
     </div>
   </nav>
-
+  <section>
+    <h1 class="display-2 text-center" id="homeWelcome"></h1>
+  </section>
   <section id="homeHeroSection" class="hero-section d-flex align-items-center p-1" style="background-image: url(assets/images/DVLogoWord.png); background-size: cover; background-position: center; height: 80vh; position: relative;">
         <div class="overlay" style="background-color:#0000008e; position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
         <div class="text-start text-white ms-5" style="position: relative; font-family: Oswald;">
@@ -88,29 +90,100 @@
           </div>
         </div>
       </section>
+      <section style="margin: 2%;">
+        <div class=" align-items-center justify-content-center">
+          <h1 class="display-4">Our Picks 'I like this kind of card maybe we use it'</h1>
+        </div>
+        <div class="container-fluid">
+          <div class="row gy-5">
+            <div class="col">
+              <div class="card" style="width: 18rem; background-color: #00000034;">
+                <img src="assets/The Crow movie poster.jpeg" class="card-img-top" alt="...">
+                <div class="card-body text-light">
+                  <div>
+                    <p class="card-text fs-5">Title</p>
+                  </div>
+                  <div class="row">
+                    <p class="col-4 card-text fs-6">Rating:</p>
+                    <p class="col-8 card-text fs-6">8</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section style="margin: 2%;">
+        <div class=" align-items-center justify-content-center">
+          <h1 class="display-4">On Your Watchlist</h1>
+        </div>
+        <div class="container-fluid">
+          <div class="row gy-5">
+            <div class="col">
+              <div class="card" style="width: 18rem; background-color: #00000034;">
+                <img src="assets/The Crow movie poster.jpeg" class="card-img-top" alt="...">
+                <div class="card-body text-light">
+                  <div>
+                    <p class="card-text fs-5">Title</p>
+                  </div>
+                  <div class="row">
+                    <p class="col-4 card-text fs-6">Rating:</p>
+                    <p class="col-8 card-text fs-6">8</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section style="margin: 2%;">
+        <div class=" align-items-center justify-content-center">
+          <h1 class="display-4">Recently Released</h1>
+        </div>
+        <div class="container-fluid">
+          <div class="row gy-5">
+            <div class="col">
+              <div class="card" style="width: 18rem; background-color: #00000034;">
+                <img src="assets/The Crow movie poster.jpeg" class="card-img-top" alt="...">
+                <div class="card-body text-light">
+                  <div>
+                    <p class="card-text fs-5">Title</p>
+                  </div>
+                  <div class="row">
+                    <p class="col-4 card-text fs-6">Rating:</p>
+                    <p class="col-8 card-text fs-6">8</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <footer class="footer text-center">
-        <div class="footer-logo">
-            <img src="../assets/logo.png" alt="Logo" class="footer-logo-img"> <!-- Replace with your logo path -->
-        </div>
-        <div class="social-media-icons">
-            <a href="#" class="social-icon">
-                <img src="../assets/facebook.png" alt="Facebook" class="img-fluid"> <!-- Replace with your Facebook icon path -->
-            </a>
-            <a href="#" class="social-icon">
-                <img src="../assets/twitter.png" alt="Twitter" class="img-fluid"> <!-- Replace with your Twitter icon path -->
-            </a>
-            <a href="#" class="social-icon">
-                <img src="../assets/instagram.png" alt="Instagram" class="img-fluid"> <!-- Replace with your Instagram icon path -->
-            </a>
-            <a href="#" class="social-icon">
-                <img src="../assets/linkedin.png" alt="LinkedIn" class="img-fluid"> <!-- Replace with your LinkedIn icon path -->
-            </a>
-        </div>
-        <p>&copy; <span id="current-year"></span> Movie Library</p>
-    </footer>
-      
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="scripts/main.js"></script>
 </body>
+
+<footer class="footer text-center">
+  <div class="footer-logo">
+      <img src="../assets/logo.png" alt="Logo" class="footer-logo-img"> <!-- Replace with your logo path -->
+  </div>
+  <div class="social-media-icons">
+      <a href="#" class="social-icon">
+          <img src="../assets/facebook.png" alt="Facebook" class="img-fluid"> <!-- Replace with your Facebook icon path -->
+      </a>
+      <a href="#" class="social-icon">
+          <img src="../assets/twitter.png" alt="Twitter" class="img-fluid"> <!-- Replace with your Twitter icon path -->
+      </a>
+      <a href="#" class="social-icon">
+          <img src="../assets/instagram.png" alt="Instagram" class="img-fluid"> <!-- Replace with your Instagram icon path -->
+      </a>
+      <a href="#" class="social-icon">
+          <img src="../assets/linkedin.png" alt="LinkedIn" class="img-fluid"> <!-- Replace with your LinkedIn icon path -->
+      </a>
+  </div>
+  <p>&copy; <span id="current-year"></span> Movie Library</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="scripts/main.js"></script>
+
 </html>
