@@ -545,27 +545,7 @@ function DisplayData() {
         
         console.log("I-hope-this-works");
 
-        console.log("👍(•_•)👍");
         
-
-
-        
-
-
-// movie page
-
-
-
-
-
-
-
-
-
-// watchlist page
-
-
-
 // Define the filterMovies function
 function filterMovies() {
     // Get selected values from the dropdowns
@@ -615,3 +595,25 @@ function DisplayFilteredMovies(filteredMovies) {
         bodySection.appendChild(movieDiv);
     });
 }
+
+
+        console.log("👍(•_•)👍");
+        
+
+
+        
+
+
+// movie page
+
+
+
+
+
+
+
+
+
+// watchlist page
+
+
