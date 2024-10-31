@@ -82,6 +82,8 @@ function DisplayData(){
 
 
 
+
+
 //1 parent class
 //2 subclasses based on genre
 let horrorMovie1=new HorrorMovie();
@@ -92,6 +94,8 @@ let actionMovie2=new ActionMovie();
 // Log in / Sign up
 
 //Sign Up
+
+
 
 
 //get email data from text field in html
@@ -123,6 +127,7 @@ ValidateEmail(email);
 //validate password
 //For this i used a regex which i found at https://www.geeksforgeeks.org/javascript-program-to-check-if-a-string-contains-uppercase-lowercase-special-characters-and-numeric-values/ 
 //This regex will test the string for at least 1: lowercase letter, capital letter, digit, special character
+
 
 
 let isPasswordValid=false;
@@ -200,6 +205,21 @@ let inputPass="QueenShrek1!"
 // else{
 //     console.log("You Shall not pass!");
 // }
+//Will edit in future depending if we go with objects or not
+// function LogIn() {
+//     if ((testMail==inputEmail&&testPass==inputPass)) {
+//         return true;
+//     }
+//     else{
+//         return false;
+//     }
+// }
+// if (LogIn()) {
+//     console.log("You shall pass!");
+// }
+// else{
+//     console.log("You Shall not pass!");
+// }
 //With an object, easy to extend to look at if theres an array of objects. Not sure how user storage works yet
 let user = {
     email: "kaikai@gmail.com",
@@ -222,6 +242,9 @@ if (LogInObj()) {
 else{
     console.log("Nuh uh");   
 }
+
+
+
 
 
 
@@ -257,6 +280,20 @@ function DisplayHomeHeader() {
         else{
             headerGenre2Section.innerHTML="";
         }
+        
+        
+        
+        
+        
+        
+        // headerHomeSection.innerHTML = `
+        //     <div class="header-info">
+        //         <h1>${featuredMovie.title}</h1>
+        //         <p>Rating: ${featuredMovie.rating}</p>
+        //         <button class="btn btn-primary">Watch Now</button>
+        //         <button class="btn btn-secondary">Add to Watchlist</button>
+        //     </div>
+        // `;
         
         
         
@@ -509,6 +546,9 @@ function DisplayData() {
         console.log("I-hope-this-works");
 
         console.log("👍(•_•)👍");
+        
+
+
         
 
 
