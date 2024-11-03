@@ -1,10 +1,9 @@
 # DV100_GroupProject_Term4
 
-
-# Skreksea - Movie Library
+# Cineflix
 
 ## Overview
-Skreksea is a dynamic movie library web application that allows users to browse, filter, and view details about popular movies. The application fetches data from The Movie Database (TMDB) API and provides a user-friendly interface for movie enthusiasts.
+ is a dynamic movie library web application that allows users to browse, filter, and view details about popular movies. The application fetches data from The Movie Database (TMDB) API and provides a user-friendly interface for movie enthusiasts.
 
 ## Features
 - **Movie Browsing**: Users can view a list of popular movies with their titles, ratings, and images.
