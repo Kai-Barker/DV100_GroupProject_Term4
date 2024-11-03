@@ -54,7 +54,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 For any inquiries or feedback, please contact:
-- **Francois le Roux**: [your-email@example.com]
-- **Kai Barker**: [your-email@example.com]
-- **Darius Guggenbichler**: [your-email@example.com]
-- **Oratile Mdladla**: [your-email@example.com]
+- **Francois le Roux**: [231256@virtualwindow.co.za]
+- **Kai Barker**: [231261@virtualwindow.co.za]
+- **Darius Guggenbichler**: [241065@virtualwindow.co.za]
+- **Oratile Mdladla**: [231263@virtualwindow.co.za]
