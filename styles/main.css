@@ -283,7 +283,7 @@ label {
 
 /* Lib-movies page */
 .header-section {
-  /* height: 600px; */
+  height: 600px;
   background-size: cover;
   background-position: center;
   display: flex;
