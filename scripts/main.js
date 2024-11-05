@@ -1,18 +1,19 @@
 // Collect data from API
 console.log("Beep Boop the scripts have arrived!");
 
-let moviesArray = []; // Ensure moviesArray is defined globally
+const moviesArray = []; // Ensure moviesArray is defined globally
 let pageCheck="";
 let movieData=[];
 let watchlistMovieArr= [];
 
 class Movie{
-    constructor(title, rating, image, genreArray, overview){
+    constructor(title, rating, image, genreArray, overview, release_date){
         this.title=title;
         this.rating=rating;
         this.image=image;
         this.genreArray=genreArray;
         this.overview=overview;
+        this.release_date=release_date;
     }
 }
 class HorrorMovie extends Movie{
@@ -48,7 +49,7 @@ const options = {
         
         const movies = data.results;
         movies.forEach(movie => {
-            const movieObj = new Movie(movie.title, movie.vote_average, movie.poster_path, movie.genre_ids, movie.overview);
+            const movieObj = new Movie(movie.title, movie.vote_average, movie.poster_path, movie.genre_ids, movie.overview, movie.release_date);
             moviesArray.push(movieObj);
         });
         console.log(moviesArray);
@@ -56,6 +57,7 @@ const options = {
         // Call functions to display the header and body
         if (pageCheck=="index") {
             DisplayHomeHeader();
+            DisplayHomePicks();
         console.log("WOrks after my method");
         }
         console.log(pageCheck);
@@ -680,7 +682,7 @@ function DisplayWatchlistHome(){
         
         watchlistContainer.innerHTML='';
         watchlistMovies=watchlistMovies.slice(0,6);
-        watchlistMovies.forEach(movie => {const cardHTML= `<div class="col">
+        watchlistMovies.forEach(movie => {const cardHTML= `<div class="col-2">
               <div class="card" style="width: 15rem; background-color: #00000034;">
                 <img src="https://image.tmdb.org/t/p/w500${movie.image}" class="card-img-top img-fluid movie-watch-image" alt="${movie.title}">
                 <div class="card-body text-light">
@@ -714,6 +716,68 @@ function DisplayWatchlistHome(){
             </div>`
     }
     
+}
+console.log("moviesArray");
+
+console.log(moviesArray);
+
+function DisplayHomePicks() {
+    console.log("DisplayHomePicks");
+    
+    const section=document.getElementById("homePicks");
+    section.innerHTML='';
+    console.log("723");
+    let sortArray=moviesArray.sort((a, b) => b.rating - a.rating);
+    const tempArr=sortArray.slice(0,6);
+    console.log("726");
+    console.log(moviesArray);
+    
+    console.log(tempArr);
+    
+    tempArr.forEach(movie => {const cardHTML= `<div class="col-2">
+        <div class="card" style="width: 15rem; background-color: #00000034;">
+          <img src="https://image.tmdb.org/t/p/w500${movie.image}" class="card-img-top img-fluid movie-watch-image" alt="${movie.title}">
+          <div class="card-body text-light">
+            <div>
+              <p class="card-text fs-5">${movie.title}</p>
+            </div>
+            <div class="row">
+              <p class="col-4 card-text fs-6">Rating:</p>
+              <p class="col-8 card-text fs-6">${movie.rating}</p>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  section.innerHTML+=cardHTML;
+    });
+}
+function DisplayHomeRecent() {
+    console.log("DisplayHomeRecent");
+    
+    const section=document.getElementById("homeRecent");
+    section.innerHTML='';
+    let sortArray=moviesArray.sort((a, b) => b.rating - a.rating);
+    const tempArr=sortArray.slice(0,6);
+    console.log(moviesArray);
+    
+    console.log(tempArr);
+    
+    tempArr.forEach(movie => {const cardHTML= `<div class="col-2">
+        <div class="card" style="width: 15rem; background-color: #00000034;">
+          <img src="https://image.tmdb.org/t/p/w500${movie.image}" class="card-img-top img-fluid movie-watch-image" alt="${movie.title}">
+          <div class="card-body text-light">
+            <div>
+              <p class="card-text fs-5">${movie.title}</p>
+            </div>
+            <div class="row">
+              <p class="col-4 card-text fs-6">Rating:</p>
+              <p class="col-8 card-text fs-6">${movie.rating}</p>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  section.innerHTML+=cardHTML;
+    });
 }
 
 // function DisplayMovieRows() {

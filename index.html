@@ -22,7 +22,7 @@
 
 </head>
 
-<body style="background-color: black; " onload="pageCheck=`index`; DisplayWatchlistHome(); retrieveLogin()">
+<body style="background-color: black; " onload="pageCheck=`index`; DisplayWatchlistHome(); retrieveLogin();">
 
   <nav class="navbar navbar-expand-lg" style="background-color: #595959;">
     <div class="container-fluid">
@@ -93,7 +93,7 @@
           <h1 class="display-4">Our Picks</h1>
         </div>
         <div class="container-fluid">
-          <div class="row gy-5">
+          <div id="homePicks" class="row gy-5">
             <div class="col">
               <div class="card" style="width: 18rem; background-color: #00000034;">
                 <img src="assets/DV Logo.png" class="card-img-top" alt="...">
@@ -140,7 +140,7 @@
           <h1 class="display-4">Recently Released</h1>
         </div>
         <div class="container-fluid">
-          <div class="row gy-5">
+          <div class="row gy-5" style="align-items: flex-start;">
             <div class="col">
               <div class="card" style="width: 18rem; background-color: #00000034;">
                 <img src="assets/The Crow movie poster.jpeg" class="card-img-top" alt="...">
