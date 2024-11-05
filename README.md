@@ -44,6 +44,10 @@ To run the Skreksea movie library locally, follow these steps:
 
 ## Contributing
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are greatly appreciated.
+Francois le Roux - Javascript & API - I did the JavaScript for the Movie Library along with a little bit for the other pages. I made the HTTP request so that it can danamically populate the Movie Library page.
+Kai Barker - Javascript,& API -
+Darius Guggenbichler - HTML &CSS -
+Oratile Mdladla - HTML & CSS -
 
 Fork the Project
 Create your Feature Branch (git checkout -b feature/AmazingFeature)
@@ -52,10 +56,10 @@ Push to the Branch (git push origin feature/AmazingFeature)
 Open a Pull Request
 
 ## Authors
-Francois le Roux - Javascript & API -
-Kai Barker - Javascript,& API -
-Darius Guggenbichler - HTML &CSS -
-Oratile Mdladla - HTML & CSS -
+Francois le Roux 
+Kai Barker
+Darius Guggenbichler
+Oratile Mdladla
 See also the list of contributors who participated in this project.
 
 ## License

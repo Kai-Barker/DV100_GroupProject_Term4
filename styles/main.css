@@ -1,5 +1,7 @@
 /*
 
+
+
 Use this too identify CSS problems
 
 .(Still need get the name, will update when I find the video again){
@@ -8,15 +10,12 @@ Use this too identify CSS problems
     
    */
 
+ body{
+  width: auto;
+ }
 
+ 
 /* nav */
-
-  /* Custom CSS for rounded corners on the navbar */
-.navbar {
-  background-color: #595959;
-  border-radius: 20px; /* Adjust this value to change the roundness */
-  padding: 10px; /* Optional: Adds spacing inside the navbar */
-}
 
 /* If you want to target only the top or bottom corners, use: */
 .navbar {

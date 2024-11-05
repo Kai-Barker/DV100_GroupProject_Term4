@@ -56,22 +56,18 @@
         <div id="movie-lib-head" class="header-section">
             <section class="hero-section d-flex align-items-center p-1">
                 <div class="overlay" style="background-color:#0000008e; position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
-                <div class="text-start text-white ms-5" style="position: relative;">
-                    <h1 class="display-3 fw-bold">Movie Title</h1>
+                <div class="text-start text-white ms-3 ms-md-5" style="position: relative;">
+                    <h1 class="display-4 display-md-3 fw-bold">Movie Title</h1>
                     <div class="row" style="padding-top: 3%; padding-bottom: 15%;">
-                        <div class="col-md-3">
-                            <p class="fs-5">Genre</p>
+                        <div class="col-6 col-md-3">
+                            <p class="fs-6 fs-md-5">Genre</p>
                         </div>
-                        <div class="col-md-3">
-                            <p class="fs-5">Genre</p>
+                        <div class="col-6 col-md-3">
+                            <p class="fs-6 fs-md-5">Genre</p>
                         </div>
-                        <div class="col-md-3 justify-content-center">
-                            <p class="fs-5">Genre</p>
+                        <div class="col-6 col-md-3 justify-content-center">
+                            <p class="fs-6 fs-md-5">Genre</p>
                         </div>
-                    </div>
-                    <div class="mt-4">
-                        <a href="#" class="btn text-light btn-lg me-3" style="background-color: #4f0224;">Watch Now</a>
-                        <a href="#" class="btn btn-outline-light btn-lg">More Info</a>
                     </div>
                 </div>
             </section>
@@ -79,10 +75,10 @@
 
         <!-- Filter HTML -->
         <div class="container mt-4">
-            <h2>Filter Movies</h2>
+            <h2 class="text-center">Filter Movies</h2>
             <div class="row mb-3">
                 <!-- Genre Filter Dropdown -->
-                <div class="col-md-4">
+                <div class="col-12 col-md-4 mb-2">
                     <div class="form-group">
                         <label for="genreSelect">Select Genre:</label>
                         <select class="form-control" id="genreSelect" onchange="filterMovies()">
@@ -103,7 +99,7 @@
                 </div>
 
                 <!-- Year Filter -->
-                <div class="col-md-4">
+                <div class="col-12 col-md-4 mb-2">
                     <div class="form-group">
                         <label for="yearSelect">Select Year:</label>
                         <select class="form-control" id="yearSelect" onchange="filterMovies()">
@@ -127,7 +123,7 @@
                 </div>
 
                 <!-- TMDB Score Filter -->
-                <div class="col-md-4">
+                <div class="col-12 col-md-4 mb-2">
                     <div class="form-group">
                         <label for="scoreSelect">Select TMDB Score:</label>
                         <select class="form-control" id="scoreSelect" onchange="filterMovies()">
@@ -148,34 +144,34 @@
 
         <div class="container-fluid">
             <div id="movie-lib-body" class="movie-body-section">
-                <!-- Movie items will be dynamically inserted here -->
+                
             </div>
         </div>
-
-    <script src="../scripts/main.js"></script>
-
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-    <footer class="footer text-center">
-        <div class="footer-logo">
-            <img src="../assets/logo.png" alt="Logo" class="footer-logo-img"> <!-- Replace with your logo path -->
-        </div>
-        <div class="social-media-icons">
-            <a href="#" class="social-icon">
-                <img src="../assets/facebook.png" alt="Facebook" class="img-fluid"> <!-- Replace with your Facebook icon path -->
-            </a>
-            <a href="#" class="social-icon">
-                <img src="../assets/twitter.png" alt="Twitter" class="img-fluid"> <!-- Replace with your Twitter icon path -->
-            </a>
-            <a href="#" class="social-icon">
-                <img src="../assets/instagram.png" alt="Instagram" class="img-fluid"> <!-- Replace with your Instagram icon path -->
-            </a>
-            <a href="#" class="social-icon">
-                <img src="../assets/linkedin.png" alt="LinkedIn" class="img-fluid"> <!-- Replace with your LinkedIn icon path -->
-            </a>
-        </div>
-        <p>&copy; <span id="current-year"></span> Movie Library</p>
-    </footer>
+    </div>
 </body>
+        <footer class="footer text-center">
+            <div class="footer-logo">
+                <img src="/assets/Footer logo.png" alt="Logo" class="footer-logo-img"> <!-- Replace with your logo path -->
+            </div>
+            <div class="social-media-icons">
+                <a href="https://web.facebook.com/theopenwindow/?_rdc=1&_rdr" class="social-icon">
+                    <img src="../assets/facebook.svg" alt="Facebook" class="img-fluid"> <!-- Replace with your Facebook icon path -->
+                </a>
+                <a href="https://twitter.com/open_window_" class="social-icon">
+                    <img src="../assets/twitterx.svg" alt="Twitter" class="img-fluid"> <!-- Replace with your Twitter icon path -->
+                </a>
+                <a href="https://www.instagram.com/openwindowinstitute/?hl=en" class="social-icon">
+                    <img src="../assets/instagram.svg" alt="Instagram" class="img-fluid"> <!-- Replace with your Instagram icon path -->
+                </a>
+                <a href="https://za.linkedin.com/school/openwindowinstitute/people" class="social-icon">
+                    <img src="../assets/linkedin.svg" alt="LinkedIn" class="img-fluid"> <!-- Replace with your LinkedIn icon path -->
+                </a>
+            </div>
+            <p>&copy; <span id="current-year"></span> Movie Library</p>
+          </footer>
+          
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+          <script src="../scripts/main.js"></script>
+
+
 </html>
