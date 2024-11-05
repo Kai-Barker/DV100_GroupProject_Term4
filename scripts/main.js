@@ -3,6 +3,8 @@ console.log("Beep Boop the scripts have arrived!");
 
 let moviesArray = []; // Ensure moviesArray is defined globally
 let pageCheck="";
+let movieData=[];
+
 class Movie{
     constructor(title, rating, image, genreArray){
         this.title=title;
@@ -22,7 +24,6 @@ class ActionMovie extends Movie{
     }
 }
 
-let movieData=[];
 
 
 //let imageHTML=document.getElementById('body'); //Image link to page, must be changed
@@ -81,6 +82,8 @@ function DisplayData(){
 
 
 
+
+
 //1 parent class
 //2 subclasses based on genre
 let horrorMovie1=new HorrorMovie();
@@ -91,6 +94,8 @@ let actionMovie2=new ActionMovie();
 // Log in / Sign up
 
 //Sign Up
+
+
 
 
 //get email data from text field in html
@@ -122,6 +127,25 @@ ValidateEmail(email);
 //validate password
 //For this i used a regex which i found at https://www.geeksforgeeks.org/javascript-program-to-check-if-a-string-contains-uppercase-lowercase-special-characters-and-numeric-values/ 
 //This regex will test the string for at least 1: lowercase letter, capital letter, digit, special character
+
+//dormant code for now
+
+// if (pageCheck=="signUp") {
+//     const passValidate=document.getElementById("signUpPassword");
+//     const confirmPassValidate=document.getElementById("signUpConfirmPassword");
+//     passValidate.onchange = ValidatePassword;
+//     confirmPassValidate.onkeyup=ValidatePassword;
+// }
+// function ValidatePassword() {
+//     if (passValidate.value == confirmPassValidate.value) {
+//         confirmPassValidate.setCustomValidity('');
+        
+//         //create button
+//     }
+//     else{
+//         confirmPassValidate.setCustomValidity("Passwords don't match");
+//     }
+// }
 
 
 let isPasswordValid=false;
@@ -199,6 +223,21 @@ let inputPass="QueenShrek1!"
 // else{
 //     console.log("You Shall not pass!");
 // }
+//Will edit in future depending if we go with objects or not
+// function LogIn() {
+//     if ((testMail==inputEmail&&testPass==inputPass)) {
+//         return true;
+//     }
+//     else{
+//         return false;
+//     }
+// }
+// if (LogIn()) {
+//     console.log("You shall pass!");
+// }
+// else{
+//     console.log("You Shall not pass!");
+// }
 //With an object, easy to extend to look at if theres an array of objects. Not sure how user storage works yet
 let user = {
     email: "kaikai@gmail.com",
@@ -221,6 +260,9 @@ if (LogInObj()) {
 else{
     console.log("Nuh uh");   
 }
+
+
+
 
 
 
@@ -270,9 +312,25 @@ function DisplayHomeHeader() {
         //         <button class="btn btn-secondary">Add to Watchlist</button>
         //     </div>
         // `;
+        
+        
+        
+        
+        
+        
+        // headerHomeSection.innerHTML = `
+        //     <div class="header-info">
+        //         <h1>${featuredMovie.title}</h1>
+        //         <p>Rating: ${featuredMovie.rating}</p>
+        //         <button class="btn btn-primary">Watch Now</button>
+        //         <button class="btn btn-secondary">Add to Watchlist</button>
+        //     </div>
+        // `;
     }
 }
 //Filtering
+
+       //Filtering
         //Filter By: Genre
         const genreMap = {
             action: 28,
@@ -307,6 +365,40 @@ function DisplayHomeHeader() {
                let genreIds = Object.values(genreMap);
                return genreIds.includes(id);
            }
+        // //Filter By: Genre
+        // const genreMap = {
+        //     action: 28,
+        //    adventure: 12,
+        //    comedy: 35,
+        //    animation: 16,
+        //    history: 36,
+        //    horror: 27,
+        //    scifi: 878,
+        //    romance: 10749,
+        //    fantasy: 14,
+        //    drama: 18,
+        //    thriller: 53
+        //    };
+        //    let filteredMovies=[];
+        //    function filterGenres(genre) {
+        //        filteredMovies=[];
+        //        genre=genre.toLowerCase();
+        //        const genreId=genreMap[genre];
+        //        if (genreId) {
+        //            filteredMovies=movieData.filter(movie => movie.genreArray.includes(genreId));
+        //        }
+        //        else {
+        //            console.log("Genre not found");
+        //        }
+        //    }
+        //    function getGenreName(value) {
+        //        return Object.keys(genreMap).find(key => genreMap[key] === value);
+        //    }
+        //    //not all genres are listed in the genremap. Use this method in if statements
+        //    function isGenreIncluded(id) {
+        //        let genreIds = Object.values(genreMap);
+        //        return genreIds.includes(id);
+        //    }
 //Collect data from API
 // function MineMovies(temp) {
 //     console.log("Here is temp"+temp);
@@ -471,7 +563,62 @@ function DisplayData() {
         
         console.log("I-hope-this-works");
 
+        
+// Define the filterMovies function
+function filterMovies() {
+    // Get selected values from the dropdowns
+    const selectedGenre = document.getElementById("genreSelect").value;
+    const selectedYear = document.getElementById("yearSelect").value;
+    const selectedScore = document.getElementById("scoreSelect").value;
+
+    // Start with all movies
+    let filteredMovies = moviesArray;
+
+    // Filter by genre
+    if (selectedGenre) {
+        const genreId = genreMap[selectedGenre.toLowerCase()];
+        filteredMovies = filteredMovies.filter(movie => movie.genreArray.includes(genreId));
+    }
+
+    // Filter by year (assuming you have a release_date property in your Movie class)
+    if (selectedYear) {
+        filteredMovies = filteredMovies.filter(movie => movie.release_date && movie.release_date.startsWith(selectedYear));
+    }
+
+    // Filter by TMDB score
+    if (selectedScore) {
+        const scoreThreshold = parseFloat(selectedScore);
+        filteredMovies = filteredMovies.filter(movie => movie.rating >= scoreThreshold);
+    }
+
+    // Update the displayed movies
+    DisplayFilteredMovies(filteredMovies);
+}
+
+// Function to display the filtered movies
+function DisplayFilteredMovies(filteredMovies) {
+    const bodySection = document.getElementById("movie-lib-body");
+    bodySection.innerHTML = ''; // Clear previous rows if necessary
+
+    filteredMovies.forEach(movie => {
+        const movieDiv = document.createElement("div");
+        movieDiv.className = "movie-item";
+        movieDiv.id = movie.title;
+        movieDiv.innerHTML = `
+            <img src="https://image.tmdb.org/t/p/w500${movie.image}" alt="${movie.title}" class="movie-image" />
+            <h2>${movie.title}</h2>
+            <p>Rating: ${movie.rating} "👍(•_•)👍"</p>
+            <a href="../pages/movie.html"><button onclick="individualMovieLogger('${movie.title}')">View More ^^</button> </a>
+        `;
+        bodySection.appendChild(movieDiv);
+    });
+}
+
+
         console.log("👍(•_•)👍");
+        
+
+
         
 
 
