@@ -58,6 +58,7 @@ const options = {
         if (pageCheck=="index") {
             DisplayHomeHeader();
             DisplayHomePicks();
+            DisplayHomeRecent();
         console.log("WOrks after my method");
         }
         console.log(pageCheck);
@@ -68,6 +69,9 @@ const options = {
             
             DisplayMovieRows();
             console.log("all works");
+        }
+        if (pageCheck="watchlist") {
+            DisplayWatchlist();
         }
         
     } catch (err) {
@@ -487,7 +491,7 @@ function DisplayData() {
                 const bodySection = document.getElementById("movie-lib-body");
                 bodySection.innerHTML = ''; // Clear previous rows if necessary
             
-                filteredMovies.forEach(movie => {
+                filteredMovies.forEach(movie => { 
                     const movieDiv = document.createElement("div");
                     movieDiv.className = "movie-item";
                     movieDiv.id = movie.title;
@@ -733,6 +737,58 @@ function DisplayWatchlistHome(){
     }
     
 }
+function DisplayWatchlist(){
+    console.log("display watchlist run");
+    
+    const watchlistContainer=document.getElementById("Watchlist");
+    
+    let watchlistMovies=JSON.parse(localStorage.getItem("watchlistMovies"))
+    if (!Array.isArray(watchlistMovies)) {
+        watchlistMovies= [watchlistMovies];
+    }
+    console.log(watchlistMovies);
+    
+    if (watchlistMovies.length!=0&&watchlistMovies[0]!=null) {
+        console.log("running this");
+        
+        watchlistContainer.innerHTML='';
+        watchlistMovies.forEach(movie => {const cardHTML= `<div class="col-2">
+              <div class="card" style="width: 16rem; background-color: #00000034;">
+                <img src="https://image.tmdb.org/t/p/w500${movie.image}" class="card-img-top img-fluid movie-watch-image" alt="${movie.title}">
+                <div class="card-body text-light">
+                  <div>
+                    <p class="card-text fs-5" style="font-size:18px;">${movie.title}</p>
+                  </div>
+                  <div class="row">
+                    <p class="col-4 card-text fs-6">Rating:</p>
+                    <p class="col-8 card-text fs-6">${movie.rating}</p>
+                  </div>
+                  <a href="../pages/movie.html"><button class="btn text-light btn-sm me-3" style="background-color: #4f0224;" onclick="individualMovieLogger('${movie.title}')">View More</button> </a>
+                </div>
+              </div>
+            </div>`;
+            
+        watchlistContainer.innerHTML+=cardHTML;
+    });
+    }
+    else{
+        watchlistContainer.innerHTML=`<div class="col">
+              <div class="card" style="width: 18rem; background-color: #00000034;">
+                <img src="assets/images/Cineflix Logo.png" class="card-img-top img-fluid w-80 h-auto" alt="...">
+                <div class="card-body text-light">
+                  <div>
+                    <p class="card-text fs-6">Watchlist empty, add something to display it here!</p>
+                  </div>
+                  <div class="row">
+                    <p class="col-4 card-text fs-6"></p>
+                    <p class="col-8 card-text fs-6"></p>
+                  </div>
+                </div>
+              </div>
+            </div>`
+    }
+    
+}
 console.log("moviesArray");
 
 console.log(moviesArray);
@@ -772,7 +828,7 @@ function DisplayHomeRecent() {
     
     const section=document.getElementById("homeRecent");
     section.innerHTML='';
-    let sortArray=moviesArray.sort((a, b) => b.rating - a.rating);
+    let sortArray=moviesArray.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
     const tempArr=sortArray.slice(0,6);
     console.log(moviesArray);
     
