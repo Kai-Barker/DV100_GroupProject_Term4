@@ -4,13 +4,15 @@ console.log("Beep Boop the scripts have arrived!");
 let moviesArray = []; // Ensure moviesArray is defined globally
 let pageCheck="";
 let movieData=[];
+let watchlistMovieArr= [];
 
 class Movie{
-    constructor(title, rating, image, genreArray){
+    constructor(title, rating, image, genreArray, overview){
         this.title=title;
         this.rating=rating;
         this.image=image;
         this.genreArray=genreArray;
+        this.overview=overview;
     }
 }
 class HorrorMovie extends Movie{
@@ -46,7 +48,7 @@ const options = {
         
         const movies = data.results;
         movies.forEach(movie => {
-            const movieObj = new Movie(movie.title, movie.vote_average, movie.poster_path, movie.genre_ids);
+            const movieObj = new Movie(movie.title, movie.vote_average, movie.poster_path, movie.genre_ids, movie.overview);
             moviesArray.push(movieObj);
         });
         console.log(moviesArray);
@@ -535,8 +537,9 @@ function DisplayData() {
                     movieDiv.innerHTML = `
                         <img src="https://image.tmdb.org/t/p/w500${movie.image}" alt="${movie.title}" class="movie-image" />
                         <h2>${movie.title}</h2>
-                        <p>Rating: ${movie.rating} "👍(•_•)👍"</p>
-                        <a href="../pages/movie.html"><button onclick="individualMovieLogger('${movie.title}')">View More ^^</button> </a>
+                        <p>Rating: ${movie.rating}</p>
+                        <a href="../pages/movie.html"><button class="btn text-light btn-sm me-3" style="background-color: #4f0224;" onclick="individualMovieLogger('${movie.title}')">View More ^^</button> </a>
+                        <button style="background-color: transparent; border: none; width: 22.5%; float: right;" onclick="WatchlistMovieAdder('${movie.title}')"><img src="../assets/images/circle-plus.png"></button>
                     `;
                     rowDiv.appendChild(movieDiv);
                     //<a href="../pages/movie.html"></a>
@@ -557,6 +560,7 @@ function DisplayData() {
                 
             }
         }
+        let currentMovie="";
         function individualMovieFetcher(){
             const temp=JSON.parse(sessionStorage.getItem("selectedMovie"));
             const headerHomeSection=document.getElementById("IndividualMovieSection");
@@ -564,7 +568,9 @@ function DisplayData() {
             const headerGenre1Section=document.getElementById("IndividualMovieGenre1");
             const headerGenre2Section=document.getElementById("IndividualMovieGenre2");
             const headerGenre3Section=document.getElementById("IndividualMovieGenre3");
+            const headerOverviewSection=document.getElementById("IndividualMovieOverview");
             console.log(temp);
+            currentMovie=temp.title;
             console.log(getGenreName(temp.genreArray[0]));
             headerHomeSection.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${temp.image})`;
             headerTitleSection.innerHTML=temp.title;
@@ -585,29 +591,151 @@ function DisplayData() {
             else{
                 headerGenre2Section.innerHTML="";
             }
+            headerOverviewSection.innerHTML=temp.overview;
         }
         
         // Display the movies when the page loads
-        DisplayHeader();
-        DisplayMovieRows();
+        // DisplayHeader();
+        // DisplayMovieRows();
         
         console.log("I-hope-this-works");
 
         console.log("👍(•_•)👍");
-        
-
-
-// movie page
-
-
-
-
-
-
-
 
 
 // watchlist page
+//adds a movie to the current watchlist
+function WatchlistMovieAdder(tempTitle) {
+    watchlistMovieArr=[];
+    const index=moviesArray.findIndex(movie => movie.title == tempTitle);
+    
+    if (index!==-1) {
+        //find from storage
+        
+        
+        if (localStorage.getItem("watchlistMovies")!=null) {
+            temp= JSON.parse(localStorage.getItem("watchlistMovies"));
+            console.log(temp);
+            console.log("array before if");
+            console.log(watchlistMovieArr);
+            
+            
+            
+            if (!Array.isArray(temp)) {
+                temp= [temp];
+            }
+            console.log("works 642");
+            if (!temp.some(movie => movie.title === tempTitle)) {
+                console.log(watchlistMovieArr);
+                
+                watchlistMovieArr.push(temp);
+                console.log("646");
+                console.log(watchlistMovieArr);
+                
+                watchlistMovieArr.push(moviesArray[index]);
+                console.log("649");
+                console.log(watchlistMovieArr);
+                watchlistMovieArr=watchlistMovieArr.flat(Infinity);
+                
+                localStorage.setItem("watchlistMovies", JSON.stringify(watchlistMovieArr));
+                console.log(JSON.parse(localStorage.getItem("watchlistMovies")));
+            }
+            console.log(temp.some(movie => movie.title === tempTitle));
+        }
+        else{
+            localStorage.setItem("watchlistMovies", JSON.stringify(moviesArray[index]))
+            console.log(JSON.parse(localStorage.getItem("watchlistMovies")));
+        }
+    }
+    else{
+        console.log("No movie found for watchlist >:(");
+        
+    }
+}
+//remove movie
+    //find if movie is on watchlist
+    //remove from the movie array
+    //clear watchlist
+    function ClearWatchList() {
+        if (localStorage.getItem("watchlistMovies")) {
+            localStorage.removeItem("watchlistMovies");
+        }
+    }
+//Display movies on homepage
+function DisplayWatchlistHome(){
+    console.log("display wtchlist home run");
+    
+    const watchlistContainer=document.getElementById("homeWatchlist");
+    
+    let watchlistMovies=JSON.parse(localStorage.getItem("watchlistMovies"))
+    if (!Array.isArray(watchlistMovies)) {
+        watchlistMovies= [watchlistMovies];
+    }
+    console.log(watchlistMovies);
+    
+    if (watchlistMovies.length!=0&&watchlistMovies[0]!=null) {
+        console.log("running this");
+        
+        watchlistContainer.innerHTML='';
+        watchlistMovies=watchlistMovies.slice(0,6);
+        watchlistMovies.forEach(movie => {const cardHTML= `<div class="col">
+              <div class="card" style="width: 15rem; background-color: #00000034;">
+                <img src="https://image.tmdb.org/t/p/w500${movie.image}" class="card-img-top img-fluid movie-watch-image" alt="${movie.title}">
+                <div class="card-body text-light">
+                  <div>
+                    <p class="card-text fs-5">${movie.title}</p>
+                  </div>
+                  <div class="row">
+                    <p class="col-4 card-text fs-6">Rating:</p>
+                    <p class="col-8 card-text fs-6">${movie.rating}</p>
+                  </div>
+                </div>
+              </div>
+            </div>`;
+        watchlistContainer.innerHTML+=cardHTML;
+    });
+    }
+    else{
+        watchlistContainer.innerHTML=`<div class="col">
+              <div class="card" style="width: 18rem; background-color: #00000034;">
+                <img src="assets/images/Cineflix Logo.png" class="card-img-top img-fluid w-80 h-auto" alt="...">
+                <div class="card-body text-light">
+                  <div>
+                    <p class="card-text fs-6">Watchlist empty, add something to display it here!</p>
+                  </div>
+                  <div class="row">
+                    <p class="col-4 card-text fs-6"></p>
+                    <p class="col-8 card-text fs-6"></p>
+                  </div>
+                </div>
+              </div>
+            </div>`
+    }
+    
+}
 
+// function DisplayMovieRows() {
+//     const bodySection = document.getElementById("movie-lib-body");
+//     bodySection.innerHTML = ''; // Clear previous rows if necessary
+//     for (let i = 0; i < 5; i++) {
+//         const rowMovies = moviesArray.slice(i * 5, (i + 1) * 5); // Get 5 movies for each row
+//         const rowDiv = document.createElement("div");
+//         rowDiv.className = "movie-body";
+        
+//         rowMovies.forEach(movie => {
+//             const movieDiv = document.createElement("div");
+//             movieDiv.className = "movie-item";
+//             movieDiv.id = movie.title;
+//             movieDiv.innerHTML = `
+//                 <img src="https://image.tmdb.org/t/p/w500${movie.image}" alt="${movie.title}" class="movie-image" />
+//                 <h2>${movie.title}</h2>
+//                 <p>Rating: ${movie.rating}</p>
+//                 <a href="../pages/movie.html"><button onclick="individualMovieLogger('${movie.title}')">View More ^^</button> </a>
+//             `;
+//             rowDiv.appendChild(movieDiv);
+//             //<a href="../pages/movie.html"></a>
+//         });
 
-
+//         bodySection.appendChild(rowDiv);
+//     }
+// }

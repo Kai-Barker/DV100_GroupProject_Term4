@@ -22,7 +22,7 @@
 
 </head>
 
-<body style="background-color: black; " onload="pageCheck=`index`; retrieveLogin();">
+<body style="background-color: black; " onload="pageCheck=`index`; DisplayWatchlistHome(); retrieveLogin()">
 
   <nav class="navbar navbar-expand-lg" style="background-color: #595959;">
     <div class="container-fluid">
@@ -40,6 +40,7 @@
           </li>
           <li class="nav-item p-3" style="font-family: Oswald;">
             <a class="nav-link text-light" href="pages/watchlist.html">Watchlist</a>
+            
           </li>
         </ul>
       </div>
@@ -89,20 +90,20 @@
       </section>
       <section style="margin: 2%;">
         <div class=" align-items-center justify-content-center">
-          <h1 class="display-4">Our Picks 'I like this kind of card maybe we use it'</h1>
+          <h1 class="display-4">Our Picks</h1>
         </div>
         <div class="container-fluid">
           <div class="row gy-5">
             <div class="col">
               <div class="card" style="width: 18rem; background-color: #00000034;">
-                <img src="assets/The Crow movie poster.jpeg" class="card-img-top" alt="...">
+                <img src="assets/DV Logo.png" class="card-img-top" alt="...">
                 <div class="card-body text-light">
                   <div>
                     <p class="card-text fs-5">Title</p>
                   </div>
                   <div class="row">
-                    <p class="col-4 card-text fs-6">Rating:</p>
-                    <p class="col-8 card-text fs-6">8</p>
+                    <p class="col-4 card-text fs-6"></p>
+                    <p class="col-8 card-text fs-6"></p>
                   </div>
                 </div>
               </div>
@@ -112,25 +113,26 @@
       </section>
       <section style="margin: 2%;">
         <div class=" align-items-center justify-content-center">
-          <h1 class="display-4">On Your Watchlist</h1>
+          <h1 class="display-4">From your Watchlist</h1>
         </div>
         <div class="container-fluid">
-          <div class="row gy-5">
+          <div id="homeWatchlist" class="row gy-5">
             <div class="col">
               <div class="card" style="width: 18rem; background-color: #00000034;">
-                <img src="assets/The Crow movie poster.jpeg" class="card-img-top" alt="...">
+                <img src="assets/images/Cineflix Logo.png" class="card-img-top img-fluid w-100 h-auto" alt="...">
                 <div class="card-body text-light">
                   <div>
                     <p class="card-text fs-5">Title</p>
                   </div>
                   <div class="row">
-                    <p class="col-4 card-text fs-6">Rating:</p>
-                    <p class="col-8 card-text fs-6">8</p>
+                    <p class="col-4 card-text fs-6"></p>
+                    <p class="col-8 card-text fs-6"></p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <button class="btn text-light btn-lg me-3" style="background-color: #4f0224;" onclick="ClearWatchList(); DisplayWatchlistHome();">Clear Watchlist</button>
         </div>
       </section>
       <section style="margin: 2%;">

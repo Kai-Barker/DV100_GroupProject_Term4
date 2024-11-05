@@ -322,7 +322,8 @@ label {
 }
 
 .movie-item {
-  margin: 10px;
+  margin: 20px;
+  margin-top: 50px;
   width: 200px;
   display: flex;
   flex-direction: column;
@@ -330,10 +331,15 @@ label {
   padding: 5px 5px 5px 5px;
   color: white;
 }
-
 .movie-image {
   width: 100%;
   height: auto;
+  border-radius: 10px;
+}
+.movie-watch-image {
+  width: 100%;
+  height: 30vh;
+  object-fit: cover;
   border-radius: 10px;
 }
 
