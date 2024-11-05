@@ -513,8 +513,6 @@ function DisplayData() {
                     <div class="header-info">
                         <h1>${featuredMovie.title}</h1>
                         <p>Rating: ${featuredMovie.rating}</p>
-                        <button class="btn btn-primary">Watch Now</button>
-                        <button class="btn btn-secondary">Add to Watchlist</button>
                     </div>
                 `;
             }
