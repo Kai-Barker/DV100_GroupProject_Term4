@@ -390,10 +390,43 @@ label {
 
 /* Footer */
 
-.footer {
-  background-color: #333; /* Background color for the footer */
-  color: #fff; /* Text color */
-  padding: 20px 0; /* Padding for the footer */
+footer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #333;
+  padding: 40px;
+}
+
+footer p{
+  color: #171717;
+}
+
+footer hr{
+  width: 90%;
+  margin: 3%;
+  background-color: #ffffff;
+}
+
+.topFooter{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+}
+
+.topFooter a:hover{
+color: red;  
+cursor: pointer;
+}
+
+.footerCF{
+  width: 100%;
+  text-align: center;
 }
 
 .footer-logo {
@@ -419,7 +452,14 @@ label {
   height: auto; /* Maintain aspect ratio */
 }
 
-.footer p {
+.bottomFooter p {
   margin: 0; /* Remove default margin */
+  color: #ffffff;
 }
 
+.bottomFooter{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
