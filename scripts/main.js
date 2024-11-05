@@ -538,8 +538,10 @@ function DisplayData() {
                         <img src="https://image.tmdb.org/t/p/w500${movie.image}" alt="${movie.title}" class="movie-image" />
                         <h2>${movie.title}</h2>
                         <p>Rating: ${movie.rating}</p>
+                        <div>
                         <a href="../pages/movie.html"><button class="btn text-light btn-sm me-3" style="background-color: #4f0224;" onclick="individualMovieLogger('${movie.title}')">View More ^^</button> </a>
                         <button style="background-color: transparent; border: none; width: 22.5%; float: right;" onclick="WatchlistMovieAdder('${movie.title}')"><img src="../assets/images/circle-plus.png"></button>
+                        </div>
                     `;
                     rowDiv.appendChild(movieDiv);
                     //<a href="../pages/movie.html"></a>
