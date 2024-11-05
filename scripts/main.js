@@ -483,7 +483,23 @@ function DisplayData() {
                 // Update the displayed movies
                 DisplayFilteredMovies(filteredMovies);
             }
-
+            function DisplayFilteredMovies(filteredMovies) {
+                const bodySection = document.getElementById("movie-lib-body");
+                bodySection.innerHTML = ''; // Clear previous rows if necessary
+            
+                filteredMovies.forEach(movie => {
+                    const movieDiv = document.createElement("div");
+                    movieDiv.className = "movie-item";
+                    movieDiv.id = movie.title;
+                    movieDiv.innerHTML = `
+                        <img src="https://image.tmdb.org/t/p/w500${movie.image}" alt="${movie.title}" class="movie-image" />
+                        <h2>${movie.title}</h2>
+                        <p>Rating: ${movie.rating} "👍(•_•)👍"</p>
+                        <a href="../pages/movie.html"><button onclick="individualMovieLogger('${movie.title}')">View More ^^</button> </a>
+                    `;
+                    bodySection.appendChild(movieDiv);
+                });
+            }
             // Function to display the filtered movies
             function DisplayMovieRows() {
                 const bodySection = document.getElementById("movie-lib-body");
