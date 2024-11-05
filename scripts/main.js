@@ -348,53 +348,33 @@ function DisplayHomeHeader() {
                return genreIds.includes(id);
            }
         // //Filter By: Genre
-        // const genreMap = {
-        //     action: 28,
-        //    adventure: 12,
-        //    comedy: 35,
-        //    animation: 16,
-        //    history: 36,
-        //    horror: 27,
-        //    scifi: 878,
-        //    romance: 10749,
-        //    fantasy: 14,
-        //    drama: 18,
-        //    thriller: 53
-        //    };
-        //    let filteredMovies=[];
-        //    function filterGenres(genre) {
-        //        filteredMovies=[];
-        //        genre=genre.toLowerCase();
-        //        const genreId=genreMap[genre];
-        //        if (genreId) {
-        //            filteredMovies=movieData.filter(movie => movie.genreArray.includes(genreId));
-        //        }
-        //        else {
-        //            console.log("Genre not found");
-        //        }
-        //    }
-        //    function getGenreName(value) {
-        //        return Object.keys(genreMap).find(key => genreMap[key] === value);
-        //    }
-        //    //not all genres are listed in the genremap. Use this method in if statements
-        //    function isGenreIncluded(id) {
-        //        let genreIds = Object.values(genreMap);
-        //        return genreIds.includes(id);
-        //    }
-//Collect data from API
-// function MineMovies(temp) {
-//     console.log("Here is temp"+temp);
-//     //Creating a new array with what we need
-//     moviesArray = temp.map(item => {
-//         return {
-//             title: item.title,
-//             rating: item.imdbRating,
-//             image: item.image,
-//             length: item.timeline
-//         }
-//     });
-//     console.log(moviesArray);
-// }
+        
+
+function DisplayData() {
+    // Display 3 movies in a carousel
+    const carouselMovies = moviesArray.slice(0, 3);
+    console.log("Carousel Movies:", carouselMovies);
+    // Code to render carouselMovies in the carousel goes here
+
+    // Display 2 sections of 5 movies each horizontally
+    const horizontalMovies1 = moviesArray.slice(3, 8);
+    const horizontalMovies2 = moviesArray.slice(8, 13);
+    console.log("Horizontal Section 1:", horizontalMovies1);
+    console.log("Horizontal Section 2:", horizontalMovies2);
+    // Code to render horizontalMovies1 and horizontalMovies2 goes here
+
+    // Display a row of 8 movie posters
+    const posterMovies = moviesArray.slice(13, 21);
+    console.log("Poster Movies:", posterMovies);
+    // Code to render posterMovies in a row goes here
+
+    buttonClicked++;
+}
+
+// Lib-movies page
+
+     //Filtering
+        
 function DisplayData() {
     // Display 3 movies in a carousel
     const carouselMovies = moviesArray.slice(0, 3);
@@ -451,7 +431,57 @@ function DisplayData() {
             }
         }
         //Filtering
-       
+                        // Define the filterMovies function
+            function filterMovies() {
+                // Get selected values from the dropdowns
+                const selectedGenre = document.getElementById("genreSelect").value;
+                const selectedYear = document.getElementById("yearSelect").value;
+                const selectedScore = document.getElementById("scoreSelect").value;
+
+                // Start with all movies
+                let filteredMovies = moviesArray;
+
+                // Filter by genre
+                if (selectedGenre) {
+                    const genreId = genreMap[selectedGenre.toLowerCase()];
+                    filteredMovies = filteredMovies.filter(movie => movie.genreArray.includes(genreId));
+                }
+
+                // Filter by year (assuming you have a release_date property in your Movie class)
+                if (selectedYear) {
+                    filteredMovies = filteredMovies.filter(movie => movie.release_date && movie.release_date.startsWith(selectedYear));
+                }
+
+                // Filter by TMDB score
+                if (selectedScore) {
+                    const scoreThreshold = parseFloat(selectedScore);
+                    filteredMovies = filteredMovies.filter(movie => movie.rating >= scoreThreshold);
+                }
+
+                // Update the displayed movies
+                DisplayFilteredMovies(filteredMovies);
+            }
+
+            // Function to display the filtered movies
+            function DisplayMovieRows() {
+                const bodySection = document.getElementById("movie-lib-body");
+                bodySection.innerHTML = ''; // Clear previous rows if necessary
+            
+                
+    moviesArray.forEach(movie => {
+        const movieDiv = document.createElement("div");
+        movieDiv.className = "movie-item"; // Use the class for styling
+        movieDiv.id = movie.title;
+        movieDiv.innerHTML = `
+            <img src="https://image.tmdb.org/t/p/w500${movie.image}" alt="${movie.title}" class="movie-image" />
+            <h2>${movie.title}</h2>
+            <p>Rating: ${movie.rating} "👍(•_•)👍"</p>
+            <a href="../pages/movie.html"><button onclick="individualMovieLogger('${movie.title}')">View More ^^</button> </a>
+        `;
+        bodySection.appendChild(movieDiv);
+    });
+}
+
     
             //page view
         function DisplayHeader() {
@@ -545,62 +575,7 @@ function DisplayData() {
         
         console.log("I-hope-this-works");
 
-        
-// Define the filterMovies function
-function filterMovies() {
-    // Get selected values from the dropdowns
-    const selectedGenre = document.getElementById("genreSelect").value;
-    const selectedYear = document.getElementById("yearSelect").value;
-    const selectedScore = document.getElementById("scoreSelect").value;
-
-    // Start with all movies
-    let filteredMovies = moviesArray;
-
-    // Filter by genre
-    if (selectedGenre) {
-        const genreId = genreMap[selectedGenre.toLowerCase()];
-        filteredMovies = filteredMovies.filter(movie => movie.genreArray.includes(genreId));
-    }
-
-    // Filter by year (assuming you have a release_date property in your Movie class)
-    if (selectedYear) {
-        filteredMovies = filteredMovies.filter(movie => movie.release_date && movie.release_date.startsWith(selectedYear));
-    }
-
-    // Filter by TMDB score
-    if (selectedScore) {
-        const scoreThreshold = parseFloat(selectedScore);
-        filteredMovies = filteredMovies.filter(movie => movie.rating >= scoreThreshold);
-    }
-
-    // Update the displayed movies
-    DisplayFilteredMovies(filteredMovies);
-}
-
-// Function to display the filtered movies
-function DisplayFilteredMovies(filteredMovies) {
-    const bodySection = document.getElementById("movie-lib-body");
-    bodySection.innerHTML = ''; // Clear previous rows if necessary
-
-    filteredMovies.forEach(movie => {
-        const movieDiv = document.createElement("div");
-        movieDiv.className = "movie-item";
-        movieDiv.id = movie.title;
-        movieDiv.innerHTML = `
-            <img src="https://image.tmdb.org/t/p/w500${movie.image}" alt="${movie.title}" class="movie-image" />
-            <h2>${movie.title}</h2>
-            <p>Rating: ${movie.rating} "👍(•_•)👍"</p>
-            <a href="../pages/movie.html"><button onclick="individualMovieLogger('${movie.title}')">View More ^^</button> </a>
-        `;
-        bodySection.appendChild(movieDiv);
-    });
-}
-
-
         console.log("👍(•_•)👍");
-        
-
-
         
 
 
@@ -615,5 +590,6 @@ function DisplayFilteredMovies(filteredMovies) {
 
 
 // watchlist page
+
 
 
