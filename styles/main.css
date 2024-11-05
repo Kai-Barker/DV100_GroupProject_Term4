@@ -282,77 +282,86 @@ label {
 
 
 /* Lib-movies page */
-
-/* Used for testing, will change */
-
 .header-section {
-    height: 300px;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
+  /* height: 600px; */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
 }
 
 .header-info {
-    text-align: center;
+  text-align: center;
 }
 
 .header-info h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
+  font-size: 36px;
+  margin-bottom: 10px;
 }
 
 .header-info p {
-    font-size: 18px;
-    margin-bottom: 20px;
+  font-size: 18px;
+  margin-bottom: 20px;
 }
 
 .movie-body-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  /* flex-wrap: wrap; */
+  /* justify-content: ; */
+  padding: 50px 50px 50px 275px;
+  align-items: flex-start;
+  margin: 0 auto;
 }
 
 .movie-body {
-    margin: 20px;
+  margin: 10px;
+  flex: 1 0 20%;
+  max-width: 250px;
 }
 
 .movie-item {
-    margin: 10px;
-    width: 200px;
+  margin: 10px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 5px 5px 5px;
+  color: white;
 }
 
 .movie-image {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
 .movie-item h2 {
-    font-size: 18px;
-    margin-top: 10px;
+  font-size: 18px;
+  margin-top: 10px;
+  text-align: center;
 }
 
 .movie-item p {
-    font-size: 14px;
-    color: #666;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
 }
 
 .filter-section {
-    margin: 20px;
+  margin: 20px;
 }
 
 .filter-section h2 {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .filter-section select {
-    width: 200px;
-    margin-bottom: 10px;
+  width: 200px;
+  margin-bottom: 10px;
 }
+
 
 
 
