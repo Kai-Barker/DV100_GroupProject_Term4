@@ -128,6 +128,24 @@ ValidateEmail(email);
 //For this i used a regex which i found at https://www.geeksforgeeks.org/javascript-program-to-check-if-a-string-contains-uppercase-lowercase-special-characters-and-numeric-values/ 
 //This regex will test the string for at least 1: lowercase letter, capital letter, digit, special character
 
+//dormant code for now
+
+// if (pageCheck=="signUp") {
+//     const passValidate=document.getElementById("signUpPassword");
+//     const confirmPassValidate=document.getElementById("signUpConfirmPassword");
+//     passValidate.onchange = ValidatePassword;
+//     confirmPassValidate.onkeyup=ValidatePassword;
+// }
+// function ValidatePassword() {
+//     if (passValidate.value == confirmPassValidate.value) {
+//         confirmPassValidate.setCustomValidity('');
+        
+//         //create button
+//     }
+//     else{
+//         confirmPassValidate.setCustomValidity("Passwords don't match");
+//     }
+// }
 
 
 let isPasswordValid=false;
