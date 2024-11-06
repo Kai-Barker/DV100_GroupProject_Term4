@@ -24,39 +24,48 @@
     <title>Skreksea - Movie Title (Individual Movie Page)</title>
 
 </head>
-<body>
 
-    <nav class="navbar navbar-expand-lg" style="background-color: #595959;">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="index.html"><img src="../assets/images/DVLogoWord.png" alt="Logo" class="img-fluid" style="width: 200px"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-            <ul class="navbar-nav mb-2 mb-lg-0">
-              <li class="nav-item p-3">
-                <a class="nav-link" href="index.html" style="color: #4f0224;">Home</a>
-              </li>
-              <li class="nav-item p-3">
-                <a class="nav-link text-light" href="lib-movies.html">Movies</a>
-              </li>
-              <li class="nav-item p-3">
-                <a class="nav-link text-light" href="#">Categories</a>
-              </li>
-              <li class="nav-item p-3">
-                <a class="nav-link text-light" href="watchlist.html">Watchlist</a>
-              </li>
-            </ul>
-          </div>
+<body style="background-color: black;" onload="pageCheck=`index`; retrieveLogin();">
+
+  <nav class="navbar navbar-expand-lg" style="background-color: #595959;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="../index.html"><img src="../assets/images/DVLogoWord.png" alt="Logo" class="img-fluid" style="width: 200px"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item p-3">
+              <a class="nav-link" href="../index.html" style="color: #4f0224;">Home</a>
+            </li>
+
+            <li class="nav-item p-3">
+              <a class="nav-link text-light" href="../pages/lib-movies.html">Movies</a>
+            </li>
+
+            <li class="nav-item p-3">
+              <a class="nav-link text-light" href="#">Categories</a>
+            </li>
+
+            <li class="nav-item p-3">
+              <a class="nav-link text-light" href="../pages/watchlist.html">Watchlist</a>
+            </li>
+          </ul>
+        </div>
+
           <div class="d-flex">
             <!-- Notification Icon -->
             <a href="#" class="nav-link p-3">
               <img src="../assets/images/searchIconDV.png" alt="Search" class="img-fluid" style="width: 30px;">
             </a>
+
             <!-- Search Icon -->
             <a href="#" class="nav-link p-3">
               <img src="../assets/images/DVNotificationsIcon.png" alt="Notifications" class="img-fluid">
             </a>
+
             <!-- Profile Icon -->
             <a href="#" class="nav-link p-3">
               <img src="../assets/images/DVProfileIcon.png" alt="Profile" class="img-fluid rounded-circle" style="width: 30px;">
@@ -64,11 +73,126 @@
           </div>
         </div>
       </nav>
+   
       
-    <div class="container">
-        <div id="movie-details" class="movie-detail-section"></div>
+  <div class="movieHeroSection">
+    <div id="movie-details" class="movie-detail-section d-flex align-items-center p-1" style="background-image: url(../assets/images/Blink\ Twice\ movie\ poster.jpeg); background-size: cover; background-position: center; height: 90vh; position: relative;">
+
+      <div class="overlayMovies" style="background-color: #0000008e; position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+        <div class="text-start text-white ms-5" style="position: relative; font-family: Oswald;">
+          <h1 id="IndividualMovieTitle" class="display-3 fw-bold">Blink Twice</h1>
+
+            <div class="IndividualMovieSection" style="padding-top: 3%; padding-bottom: 15%; space-between;">
+
+              <div class="row">
+                 <div class="col-md-4" style="font-family: Roboto Condensed;">
+                    <p id="IndividualMovieGenere1" class="fs-5">PsychologicalThriller</p>
+              </div>
+  
+              <div class="col-md-4">
+                 <p id="IndividualMovieGenere2" class="fs-5">Mystery</p>
+              </div>
+  
+              <div class="col-md-4">
+                <p id="IndividualMovieGenere3" class="fs-5">Crime</p>
+              </div>
+  
+              <div class="col-md-4">
+                <p id="moviesAboutText" class="fs-5"></p>
+              </div>
+                  
+              <div class="rowMovieText">
+                <p id="MoviesAboutText" class="fs-5">When tech billionaire Slater King meets cocktail waitress Frida at his fundraising gala, he invites her to join him and his friends for a dream vacation on his private island. Wild nights soon blend into sun-soaked days, but when strange things start to happen, Frida must uncover the truth if she hopes to make it out alive.</p>
+              </div>
+  
+              </div>
+                
+            <div class="mt-4" style="font-family: Oswald;">
+              <a href="#" class="btn text-light btn-lg me-3" style="background-color: #4f0224;">Play</a>
+              <a href="#" class="btn btn-outline-light btn-lg me-3">Add to Watch list</a>
+              <a href="#" class="btn btn-outline-light btn-lg">You May Aso Like</a>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
     </div>
 
+    <section class="movies " id="movies ">
+      <h2 class="moviesHeading ">More Like This</h2>
+
+       <div class="moviesContainer1">
+          <div class="box">
+            <div class="box-image">
+              <img src="../assets/images/Don't worry Darling movie poster.jpg" alt="">
+                <h5>Don't Worry Darling</h5>
+                <span>2h 2m| Thriller/Mystery</span>
+            </div>
+          </div>
+
+          <div class="box">
+            <div class="box-image">
+              <img src="../assets/images/Bed rest movie poster.jpg" alt="">
+                <h5>Bed Rest</h5>
+                <span>2h 2m| Thriller/Mystery</span>
+            </div>
+          </div>
+
+          <div class="box">
+            <div class="box-image">
+              <img src="../assets/images/Intrusion movie poster.jpg" alt="">
+                <h5>Intrusion</h5>
+                <span>2h 2m| Thriller/Mystery</span>
+            </div>
+          </div>
+
+          <div class="box">
+            <div class="box-image">
+              <img src="../assets/images/Invisible man movie poster.jpg" alt="">
+                <h5>The Invisible Man</h5>
+                <span>2h 2m| Thriller/Mystery</span>
+            </div>
+          </div>
+       </div>
+
+
+       <div class="moviesContainer2">
+        <div class="box">
+          <div class="box-image">
+            <img src="../assets/images/You series image.jpg" alt="">
+              <h5>You</h5>
+              <span>4 seasons| Thriller/Mystery</span>
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="box-image">
+            <img src="../assets/images/The Watcher series poster.jpg" alt="">
+              <h5>The Watcher</h5>
+              <span>1 season| Thriller/Mystery</span>
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="box-image">
+            <img src="../assets/images/Ratched series poster.jpg" alt="">
+              <h5>Ratched</h5>
+              <span>1 season| Thriller/Mystery</span>
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="box-image">
+            <img src="../assets/images/behind her eyes series poster.jpg" alt="">
+              <h5>Behind Her Eyes</h5>
+              <span>1 season| Thriller/Mystery</span>
+          </div>
+        </div>
+     </div>
+    </section>
+  </section>
 
     <footer class="footer text-center">
       <div class="footer-logo">
