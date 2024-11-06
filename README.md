@@ -45,8 +45,8 @@ To run the Skreksea movie library locally, follow these steps:
 ## Contributing
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are greatly appreciated.
 Francois le Roux - Javascript & API & HTML & CSS- I did the JavaScript for the Movie Library along with a little bit for the other pages. I made the HTTP request so that it can danamically populate the Movie Library page.
-Kai Barker - Javascript,& API & HTML & CSS- I worked on the functionality for the log in page, the entirety of the home page minus the footer (utilising variants of Francois display code), entire watchlist page, functionality for individual movie page, small contributions to movie library namely the buttons on each card. I also worked on the fetching of data from the API and working with that data.
-Darius Guggenbichler - HTML &CSS -
+Kai Barker - Javascript,& API & HTML & CSS- I worked on the functionality for the log in page, the entirety of the home page minus the footer (utilising variants of Francois display code), entire watch-list page, functionality for individual movie page, small contributions to movie library namely the buttons on each card. I also worked on the fetching of data from the API and working with that data.
+Darius Guggenbichler - HTML, CSS and responsiveness for most pages - I did the responsiveness for all pages, and did a couple of HTML and most CSS.
 Oratile Mdladla - HTML & CSS -
 
 Fork the Project
@@ -70,11 +70,12 @@ Acknowledgements
 - Thank you Talya Beker and William for educating us in this term's theory.
 - [The Movie Database (TMDB)](https://www.themoviedb.org/) for providing the movie data API.
 - Bootstrap for the responsive design framework.
+- (icon website) for the icon design.
 
 
 ## Contact
 For any inquiries or feedback, please contact:
 - **Francois le Roux**: [231256@virtualwindow.co.za]
-- **Kai Barker**: [231261@virtualwindow.co.za]
-- **Darius Guggenbichler**: [241065@virtualwindow.co.za]
+- **Kai Barker**: [241056@virtualwindow.co.za]
+- **Darius Guggenbichler**: [231261@virtualwindow.co.za]
 - **Oratile Mdladla**: [231263@virtualwindow.co.za]
