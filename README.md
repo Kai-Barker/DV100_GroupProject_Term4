@@ -39,15 +39,19 @@ To run the Skreksea movie library locally, follow these steps:
 - **CSS**: For styling the application and ensuring a responsive layout.
 - **Bootstrap**: For responsive design and UI components.
 - **JavaScript**: For dynamic content and interaction with the TMDB API.
-- **jQuery**:
+- **jQuery**: For thr animation from the sign up and log in.
 - **API (TMDB api)**: Fro providing the API.
 
 ## Contributing
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are greatly appreciated.
-Francois le Roux - Javascript & API & HTML & CSS- I did the JavaScript for the Movie Library along with a little bit for the other pages. I made the HTTP request so that it can danamically populate the Movie Library page.
-Kai Barker - Javascript,& API & HTML & CSS- I worked on the functionality for the log in page, the entirety of the home page minus the footer (utilising variants of Francois display code), entire watch-list page, functionality for individual movie page, small contributions to movie library namely the buttons on each card. I also worked on the fetching of data from the API and working with that data.
-Darius Guggenbichler - HTML, CSS and responsiveness for most pages - I did the responsiveness for all pages, and did a couple of HTML and most CSS.
-Oratile Mdladla - HTML & CSS -
+
+**Francois le Roux** - Javascript & API & HTML & CSS- I did the JavaScript for the Movie Library along with a little bit for the other pages. I made the HTTP request so that it can danamically populate the Movie Library page.
+
+**Kai Barker** - Javascript,& API & HTML & CSS- I worked on the functionality for the log in page, the entirety of the home page minus the footer (utilising variants of Francois display code), entire watch-list page, functionality for individual movie page, small contributions to movie library namely the buttons on each card. I also worked on the fetching of data from the API and working with that data.
+
+**Darius Guggenbichler** - HTML, CSS and responsiveness for most pages - I did the responsiveness for all pages, and did a couple of HTML and most CSS.
+
+**Oratile Mdladla** - HTML & CSS -
 
 Fork the Project
 Create your Feature Branch (git checkout -b feature/AmazingFeature)
@@ -71,6 +75,7 @@ Acknowledgements
 - [The Movie Database (TMDB)](https://www.themoviedb.org/) for providing the movie data API.
 - Bootstrap for the responsive design framework.
 - (icon website) for the icon design.
+- https://codyhouse.co/gem/animated-transition-effects/ for the kaleido scope animation.
 
 
 ## Contact

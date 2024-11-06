@@ -62,9 +62,6 @@ fieldset {
   width: 75%;
   align-items: flex-start;
 }
-#SignLog h4{
-  font-size: large;
-}
 
 #SignLog input, #contact textarea {
   width: 100%;
@@ -663,9 +660,10 @@ Kaleidoscope Effect
 
 -------------------------------- */
 .kaleidoscope-transition {
-  font-family: "Playfair Display", serif;
+  /* font-family: "Playfair Display", serif; */
   color: #ffffff;
 }
+
 .kaleidoscope-transition h1, .kaleidoscope-transition h2 {
   margin-bottom: .4em;
   font-size: 4rem;
