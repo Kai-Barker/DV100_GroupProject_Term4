@@ -2,7 +2,7 @@
 
 # Cineflix
 
-![Alt Text](/assets/images/Mockups/MacBook%20#13.svg)
+![Mockup1](/assets/images/Mockups/MacBook%20#13.svg)
 
 ## Overview
  is a dynamic movie library web application that allows users to browse, filter, and view details about popular movies. The application fetches data from The Movie Database (TMDB) API and provides a user-friendly interface for movie enthusiasts.
@@ -61,7 +61,7 @@ Commit your Changes (git commit -m 'Add some AmazingFeature')
 Push to the Branch (git push origin feature/AmazingFeature)
 Open a Pull Request
 
-![Alt Text](/assets/images/Mockups/MacBook%20#13.svg)
+![Mockup2](/assets/images/Mockups/MacBook%20#13.svg)
 
 ## Authors
 Francois le Roux 
@@ -90,4 +90,4 @@ For any inquiries or feedback, please contact:
 - **Oratile Mdladla**: [231263@virtualwindow.co.za]
 
 
-![Alt Text](/assets/Footer%20logo.png)
+![logo](/assets/Footer%20logo.png)
