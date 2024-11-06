@@ -350,6 +350,7 @@ label {
   font-size: 18px;
   margin-top: 10px;
   text-align: center;
+  color: #ffffff;
 }
 
 .movie-item p {
@@ -409,7 +410,7 @@ footer p{
 
 footer hr{
   width: 90%;
-  margin: 3%;
+  margin: 1%;
   background-color: #ffffff;
 }
 
@@ -421,11 +422,6 @@ footer hr{
   flex-direction: row;
   align-items: center;
   margin: 0;
-}
-
-.topFooter a:hover{
-color: red;  
-cursor: pointer;
 }
 
 .footerCF{
