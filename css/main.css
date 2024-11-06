@@ -697,7 +697,7 @@ Kaleidoscope Effect
 .kaleidoscope-transition .cd-transition-layer .bg-layer {
   /* sprite composed of 25 frames */
   width: 2500%;
-  background-image: url(/assets/images/kaleidoscope.png);
+  background-image: url(../assets/images/kaleidoscope.png);
 }
 .kaleidoscope-transition .cd-transition-layer.opening .bg-layer {
   -webkit-animation: cd-sequence 0.8s steps(24) forwards;
