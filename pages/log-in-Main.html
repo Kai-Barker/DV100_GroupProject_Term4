@@ -16,8 +16,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/jqueryreset.css"> <!-- CSS reset -->
-	<link rel="stylesheet" href="../styles/main.css"> <!-- Resource style -->
+    <link rel="stylesheet" href="../css/jqueryreset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="../css/main.css"> <!-- Resource style -->
 
     <title>Skreksea - Log in/Sign Up</title> <!-- We can use a similiar log in/ sign up format as Netflix-->
 
@@ -41,7 +41,7 @@
         
         <div class="flexItemSignLog">
             <form id="SignLog">
-            <h4>Log In</h4>
+            <H4>Log In</H4>
                 <fieldset>
                     <h5>Email</h5>
                     <input placeholder="Enter your email" type="email" name="email" tabindex="2" required>
@@ -95,20 +95,21 @@
         
                 <div class="vl"></div>
             
-            <div class="flexItemSignLog"><form id="SignLog">
+            <div class="flexItemSignLog">
+                <form id="SignLog">
                 <H4>Create an Account</H4>
                     <fieldset>
                         <h5>Name</h5>
-                        <input placeholder="Enter your name" type="text" name="name" tabindex="1" required>
+                        <input id="SUname" placeholder="Enter your name" type="text" name="name" tabindex="1" required>
                     </fieldset>
                     
                     <fieldset>
                         <h5>Email</h5>
-                        <input placeholder="Enter your email" type="email" name="email" tabindex="2" required>
+                        <input id="SUemail" placeholder="Enter your email" type="email" name="email" tabindex="2" required>
                     </fieldset>
                     <fieldset>
                         <h5>Password</h5>
-                        <input placeholder="Create a password" type="password" id="pwd" name="pwd" minlength="8">
+                        <input id="SUpass" placeholder="Create a password" type="password" id="pwd" name="pwd" minlength="8">
                     </fieldset>
                     <p style="font-size: 70%;">Must have at least 8 characters</p>
                     <fieldset>
@@ -118,8 +119,9 @@
                     <fieldset>
                         <button type="button" id="ContactSubmit" onclick="alert('Thank you for contacting us')">Create Account</button>                
                     </fieldset>
-        
-                    <p>Already have an account? <a href="../pages/log-in.html">Log In</a></p>
+                    <div id="loginBTN"></div>
+                </form>
+                    
         
                     <h6>OR</h6>
                     
@@ -155,7 +157,7 @@
     <script>
         if( !window.jQuery ) document.write('<script src="js/jquery-2.2.1-min.js"><\/script>');
     </script>
-    <script src="../scripts/main.js"></script> <!-- Resource jQuery -->
+    <script src="../js/main.js"></script> <!-- Resource jQuery -->
     </body>
 </html>
 
