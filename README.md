@@ -74,13 +74,11 @@ See also the list of contributors who participated in this project.
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
-Acknowledgements
-- Thank you Talya Beker and William for educating us in this term's theory.
+- Thank you **Talya Beker** and **William** for educating us in this term's theory.
 - [The Movie Database (TMDB)](https://www.themoviedb.org/) for providing the movie data API.
 - Bootstrap for the responsive design framework.
 - (icon website) for the icon design.
-- https://codyhouse.co/gem/animated-transition-effects/ for the kaleido scope animation.
-
+- [https://codyhouse.co/gem/animated-transition-effects/] for the kaleidoscope animation.
 
 ## Contact
 For any inquiries or feedback, please contact:
@@ -88,6 +86,5 @@ For any inquiries or feedback, please contact:
 - **Kai Barker**: [241056@virtualwindow.co.za]
 - **Darius Guggenbichler**: [231261@virtualwindow.co.za]
 - **Oratile Mdladla**: [231263@virtualwindow.co.za]
-
 
 ![logo](/assets/Footer%20logo.png)
