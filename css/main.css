@@ -428,6 +428,8 @@ footer hr{
 
 .footer-logo {
   margin-bottom: 15px; /* Space between logo and icons */
+  margin-left: 20%;
+  justify-content: center;
 }
 
 .footer-logo-img {
