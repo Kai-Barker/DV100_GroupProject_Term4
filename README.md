@@ -70,6 +70,7 @@ Acknowledgements
 - Thank you Talya Beker and William for educating us in this term's theory.
 - [The Movie Database (TMDB)](https://www.themoviedb.org/) for providing the movie data API.
 - Bootstrap for the responsive design framework.
+- (icon website) for the icon design.
 
 
 ## Contact
